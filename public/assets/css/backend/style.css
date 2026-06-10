@@ -225,6 +225,28 @@ textarea {
     box-shadow: none;
 }
 
+.header-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-sorath-dark-color);
+}
+
+.header-icon-btn:hover,
+.header-icon-btn:focus {
+    background: rgba(13, 110, 110, 0.08);
+    color: var(--primary-sorath-color);
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+}
+
 .admin-header-right .dropdown-toggle::after {
     display: none;
 }

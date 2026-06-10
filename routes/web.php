@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.frontend.home');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/about-us', [AboutController::class, 'index']);
+Route::get('/team', [TeamController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('pages.backend.dashboard');
