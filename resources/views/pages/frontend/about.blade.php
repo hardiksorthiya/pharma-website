@@ -3,7 +3,7 @@
 @section('title', 'About Us')
 
 @section('breadcrumb')
-    @include('components.frontend.about.page-hero', ['title' => 'About Us'])
+    <x-frontend.page-hero title="About Us" />
 @endsection
 
 @section('content')

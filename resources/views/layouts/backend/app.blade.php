@@ -6,6 +6,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Sanskruti Pharma') }}</title>
+        @if (isset($settings) && $settings->favicon_url)
+            <link rel="icon" href="{{ $settings->favicon_url }}">
+        @endif
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">

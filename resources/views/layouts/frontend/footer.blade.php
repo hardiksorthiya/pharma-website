@@ -1,34 +1,8 @@
 <footer class="frontend-footer">
     <div class="container">
-        <div class="footer-newsletter">
-            <h2 class="footer-newsletter-title">Stay updated with the latest research insights</h2>
-            <form class="footer-newsletter-form" action="#" method="post">
-                @csrf
-                <input type="email" class="footer-newsletter-input" name="email" placeholder="Enter Email Address*" required>
-                <button type="submit" class="footer-newsletter-btn">
-                    <span>Subscribe</span>
-                    <span class="footer-newsletter-btn-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
-                        </svg>
-                    </span>
-                </button>
-            </form>
-        </div>
-
-        <div class="footer-divider"></div>
-
         <div class="row footer-main">
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <a href="{{ url('/') }}" class="footer-logo">
-                    <span class="footer-logo-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                            <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13z"/>
-                        </svg>
-                    </span>
-                    <span class="footer-logo-text">{{ config('app.name', 'Sanskruti Pharma') }}</span>
-                </a>
+                <x-site-logo class="footer-logo" icon-class="footer-logo-icon" text-class="footer-logo-text" />
                 <p class="footer-about">
                     We support discovery across healthcare, biotechnology, and pharmaceutical sciences.
                 </p>
@@ -42,30 +16,32 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-lg-2 mb-5 mb-md-0">
+            <div class="col-md-6 col-lg-2 mb-5 mb-md-0">
                 <h3 class="footer-col-title">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('/about-us') }}">About Us</a></li>
-                    <li><a href="{{ url('/team') }}">Our Team</a></li>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">Case Studies</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{{ url('/research-and-development') }}">Research and Development</a></li>
+                    <li><a href="{{ url('/gallery') }}">Gallery</a></li>
+                    <li><a href="{{ url('/services') }}">Services</a></li>
+                    <li><a href="{{ url('/blog') }}">Blog</a></li>
+                    <li><a href="{{ url('/events') }}">Events</a></li>
                 </ul>
             </div>
 
-            <div class="col-md-4 col-lg-3 mb-5 mb-md-0">
-                <h3 class="footer-col-title">Our Services</h3>
+            <div class="col-md-6 col-lg-2 mb-5 mb-md-0">
+                <h3 class="footer-col-title">Product Categories</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Diagnostic Testing</a></li>
-                    <li><a href="#">Laboratory Analysis</a></li>
-                    <li><a href="#">Industrial Testing</a></li>
-                    <li><a href="#">Clinical Testing</a></li>
-                    <li><a href="#">Chemical Testing</a></li>
+                    @forelse ($footerProductCategories as $category)
+                        <li>
+                            <a href="{{ url('/products?category=' . $category->id) }}">{{ $category->title }}</a>
+                        </li>
+                    @empty
+                        <li><span class="footer-links-empty">No categories yet</span></li>
+                    @endforelse
                 </ul>
             </div>
 
-            <div class="col-md-4 col-lg-3">
+            <div class="col-md-12 col-lg-4">
                 <h3 class="footer-col-title">Follow Us On Social</h3>
                 <p class="footer-social-text">
                     Connect with us online for updates, breakthroughs, and lab highlights.
@@ -97,11 +73,6 @@
 
         <div class="footer-bottom">
             <p class="footer-copyright">Copyright &copy; {{ date('Y') }} All Rights Reserved.</p>
-            <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <span class="footer-bottom-dot" aria-hidden="true"></span>
-                <a href="#">Legal Documents</a>
-            </div>
         </div>
     </div>
 </footer>

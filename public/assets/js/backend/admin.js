@@ -39,4 +39,18 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(applySidebarState, 150);
     });
+
+    document.querySelectorAll('[data-sidebar-group] .sidebar-group-toggle').forEach(function (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+            var group = toggleBtn.closest('[data-sidebar-group]');
+
+            if (!group) {
+                return;
+            }
+
+            var isOpen = group.classList.contains('is-open');
+            group.classList.toggle('is-open', !isOpen);
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        });
+    });
 })();

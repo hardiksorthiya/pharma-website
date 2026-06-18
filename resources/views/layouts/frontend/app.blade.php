@@ -6,6 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name', 'Sanskruti Pharma'))</title>
+    @if ($settings->favicon_url)
+        <link rel="icon" href="{{ $settings->favicon_url }}">
+    @endif
+    @stack('meta')
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/frontend/style.css') }}">
@@ -25,12 +29,15 @@
 
     @include('layouts.frontend.footer')
 
+    <x-frontend.floating-actions />
+
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/main.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/numbers-counter.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/cursor.js') }}"></script>
+    <script src="{{ asset('assets/js/frontend/scroll-top.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

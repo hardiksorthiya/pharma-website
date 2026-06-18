@@ -1,8 +1,9 @@
 @php
-    $companyActive = request()->is('about-us*', 'team*');
+    $companyActive = request()->is('about-us*', 'team*', 'research-and-development*', 'our-core-principles*');
 
     $navItems = [
         ['type' => 'link', 'label' => 'Home', 'url' => url('/'), 'active' => request()->is('/')],
+       
         [
             'type' => 'dropdown',
             'label' => 'Company',
@@ -10,27 +11,23 @@
             'children' => [
                 ['label' => 'About Us', 'url' => url('/about-us'), 'active' => request()->is('about-us')],
                 ['label' => 'Our Team', 'url' => url('/team'), 'active' => request()->is('team')],
+                ['label' => 'Research and Development', 'url' => url('/research-and-development'), 'active' => request()->is('research-and-development')],
+                ['label' => 'Our Core Principles', 'url' => url('/our-core-principles'), 'active' => request()->is('our-core-principles')],
             ],
         ],
-        ['type' => 'link', 'label' => 'Blog', 'url' => '#', 'active' => request()->is('blog*')],
-        ['type' => 'link', 'label' => 'Services', 'url' => '#', 'active' => request()->is('services*')],
-        ['type' => 'link', 'label' => 'Products', 'url' => '#', 'active' => request()->is('products*')],
-        ['type' => 'link', 'label' => 'Contact Us', 'url' => '#', 'active' => request()->is('contact-us')],
+        ['type' => 'link', 'label' => 'Services', 'url' => url('/services'), 'active' => request()->is('services*')],
+        ['type' => 'link', 'label' => 'Products', 'url' => url('/products'), 'active' => request()->is('products*')],
+        ['type' => 'link', 'label' => 'Gallery', 'url' => url('/gallery'), 'active' => request()->is('gallery')],
+        ['type' => 'link', 'label' => 'Events', 'url' => url('/events'), 'active' => request()->is('events*')],
+        ['type' => 'link', 'label' => 'Blog', 'url' => url('/blog'), 'active' => request()->is('blog*')],
+        ['type' => 'link', 'label' => 'Contact Us', 'url' => url('/contact-us'), 'active' => request()->is('contact-us')],
     ];
 @endphp
 
-<header class="frontend-header {{ request()->is('/') || request()->is('about-us', 'team') ? 'frontend-header--hero' : 'frontend-header--static' }}">
+<header class="frontend-header {{ request()->is('/') || request()->is('about-us', 'team', 'research-and-development', 'our-core-principles', 'contact-us', 'categories', 'products', 'products/*', 'blog', 'blog/*', 'events', 'events/*', 'gallery', 'services', 'services/*') ? 'frontend-header--hero' : 'frontend-header--static' }}">
     <div class="container">
         <div class="header-inner">
-            <a href="{{ url('/') }}" class="header-logo">
-                <span class="header-logo-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                        <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13z"/>
-                    </svg>
-                </span>
-                <span class="header-logo-text">{{ config('app.name', 'Sanskruti Pharma') }}</span>
-            </a>
+            <x-site-logo />
 
             <nav class="header-nav d-none d-lg-flex">
                 <ul class="header-menu">
@@ -91,15 +88,7 @@
 
 <aside class="mobile-sidebar" id="mobileSidebar" aria-hidden="true">
     <div class="mobile-sidebar-header">
-        <a href="{{ url('/') }}" class="header-logo">
-            <span class="header-logo-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13z"/>
-                </svg>
-            </span>
-            <span class="header-logo-text">{{ config('app.name', 'Sanskruti Pharma') }}</span>
-        </a>
+        <x-site-logo :icon-size="20" />
         <button type="button" class="btn mobile-sidebar-close" id="mobileSidebarClose" aria-label="Close menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>

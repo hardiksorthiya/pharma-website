@@ -6,9 +6,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'Dashboard')</title>
+    @if ($settings->favicon_url)
+        <link rel="icon" href="{{ $settings->favicon_url }}">
+    @endif
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/backend/style.css') }}">
+    @stack('styles')
 </head>
 <body class="admin-body">
     <div class="admin-wrapper" id="adminWrapper">
