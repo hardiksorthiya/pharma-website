@@ -33,9 +33,9 @@
     ];
 @endphp
 
-<section class="testimonials-section">
+<section class="testimonials-section home-reveal home-parallax" data-home-reveal data-home-parallax>
     <div class="container">
-        <div class="row testimonials-header align-items-end">
+        <div class="row testimonials-header align-items-end home-reveal-item">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <span class="testimonials-badge">
                     <span class="testimonials-badge-dot"></span>
@@ -52,18 +52,18 @@
                     Discover how our commitment to accuracy, scientific integrity, and innovative research
                     has delivered exceptional results for clients worldwide.
                 </p>
-                <a href="#" class="testimonials-cta">
+                {{-- <a href="#" class="testimonials-cta">
                     <span>View All Testimonials</span>
                     <span class="testimonials-cta-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
                         </svg>
                     </span>
-                </a>
+                </a> --}}
             </div>
         </div>
 
-        <div class="testimonials-slider-wrap">
+        <div class="testimonials-slider-wrap home-reveal-item">
             <div class="testimonials-slider" id="testimonialsSlider">
                 @foreach ($testimonials as $testimonial)
                     <div class="testimonial-slide">

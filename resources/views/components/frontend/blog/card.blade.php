@@ -39,7 +39,7 @@
                 <p class="blog-card-excerpt">{{ $blog->excerpt }}</p>
             @endif
 
-            <span class="blog-card-cta">
+            <span class="blog-card-cta cursor-zoom">
                 <span>Read Article</span>
                 <span class="blog-card-cta-icon" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">

@@ -1,6 +1,6 @@
-<section class="numbers-section">
+<section class="numbers-section home-reveal home-parallax" data-home-reveal data-home-parallax>
     <div class="container">
-        <div class="numbers-heading text-center">
+        <div class="numbers-heading text-center home-reveal-item">
             <h2 class="numbers-title">
                 Dedicated to advancing science through precise testing and analysis
                 <span class="numbers-title-accent cursor-zoom">empowering research</span>
@@ -8,7 +8,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0">
+            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
@@ -17,12 +17,12 @@
                     </span>
                     <div class="numbers-value" data-counter data-target="98" data-suffix="%">0%</div>
                     <div class="numbers-divider"></div>
-                    <h3 class="numbers-label">Client Satisfaction Rate</h3>
+                    <h3 class="numbers-label cursor-zoom">Client Satisfaction Rate</h3>
                     <p class="numbers-text">Over 98% client satisfaction driven by quality processes and reliable laboratory outcomes.</p>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0">
+            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
@@ -32,12 +32,12 @@
                     </span>
                     <div class="numbers-value" data-counter data-target="12000" data-separator="." data-suffix="+">0+</div>
                     <div class="numbers-divider"></div>
-                    <h3 class="numbers-label">Samples Analyzed</h3>
+                    <h3 class="numbers-label cursor-zoom">Samples Analyzed</h3>
                     <p class="numbers-text">Thousands of samples processed with precision using validated laboratory methods.</p>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0">
+            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
@@ -48,12 +48,12 @@
                     </span>
                     <div class="numbers-value" data-counter data-target="250" data-suffix="+">0+</div>
                     <div class="numbers-divider"></div>
-                    <h3 class="numbers-label">Research Projects Completed</h3>
+                    <h3 class="numbers-label cursor-zoom">Research Projects Completed</h3>
                     <p class="numbers-text">Successfully delivered research projects with accurate data and reliable outcomes.</p>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0">
+            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
@@ -62,22 +62,19 @@
                     </span>
                     <div class="numbers-value" data-counter data-target="35" data-suffix="+">0+</div>
                     <div class="numbers-divider"></div>
-                    <h3 class="numbers-label">Years of Excellence</h3>
+                    <h3 class="numbers-label cursor-zoom">Years of Excellence</h3>
                     <p class="numbers-text">Decades of trusted pharmaceutical manufacturing and healthcare innovation worldwide.</p>
                 </div>
             </div>
         </div>
 
-        <div class="numbers-cta">
-            <img class="numbers-cta-avatar"
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=80&q=80"
-                alt="Lab specialist">
+        <div class="numbers-cta home-reveal-item">
             <span class="numbers-cta-phone">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                 </svg>
             </span>
-            <p class="numbers-cta-text">
+            <p class="numbers-cta-text cursor-zoom">
                 Let's make something great work together.
                 <a href="#" class="numbers-cta-link">Get Free Quote</a>
             </p>

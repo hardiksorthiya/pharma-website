@@ -1,6 +1,6 @@
-<section class="features-section">
+<section class="features-section home-reveal home-parallax" data-home-reveal data-home-parallax>
     <div class="container">
-        <div class="row features-header align-items-end">
+        <div class="row features-header align-items-end home-reveal-item">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <span class="features-badge">
                     <span class="features-badge-dot"></span>
@@ -12,11 +12,11 @@
                 </h2>
             </div>
             <div class="col-lg-5">
-                <p class="features-intro">
+                <p class="features-intro cursor-zoom">
                     We are committed to delivering reliable laboratory services, precise analysis,
                     and research support backed by scientific expertise and modern technology.
                 </p>
-                <a href="#" class="features-cta">
+                <a href="#" class="features-cta cursor-zoom">
                     <span>Contact Us</span>
                     <span class="features-cta-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="row features-grid">
-            <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="col-lg-4 mb-4 mb-lg-0 home-reveal-item">
                 <div class="feature-media">
                     <img src="https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?auto=format&fit=crop&w=800&q=80"
                         alt="Scientists in laboratory">
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="col-lg-4 mb-4 mb-lg-0 home-reveal-item">
                 <div class="features-stack">
                     <div class="feature-card feature-card--team">
                         <div class="feature-avatars">
@@ -68,7 +68,7 @@
                     <div class="feature-card feature-card--contact">
                         <h3 class="feature-card-title">Contact Us Today!</h3>
                         <p class="feature-card-text">Contact us today to schedule a consultation or request a quote.</p>
-                        <a href="tel:+1234567890" class="feature-call-btn">
+                        <a href="tel:+1234567890" class="feature-call-btn cursor-zoom">
                             <span>Call: +(123) 456-789</span>
                             <span class="feature-call-btn-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 home-reveal-item">
                 <div class="features-stack">
                     <div class="feature-card feature-card--standards">
                         <h3 class="feature-card-title">Certified Quality Standards</h3>

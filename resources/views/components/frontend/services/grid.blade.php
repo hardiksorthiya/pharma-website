@@ -31,10 +31,11 @@
     $services = $limit ? array_slice($allServices, 0, (int) $limit) : $allServices;
 @endphp
 
-<section class="services-section services-section--{{ $variant }}">
+<section class="services-section services-section--{{ $variant }} {{ $variant === 'home' ? 'home-reveal home-parallax' : '' }}"
+    @if ($variant === 'home') data-home-reveal data-home-parallax @endif>
     <div class="container">
         @if ($showHeader)
-            <div class="row services-header align-items-end">
+            <div class="row services-header align-items-end {{ $variant === 'home' ? 'home-reveal-item' : '' }}">
                 <div class="col-lg-7 mb-4 mb-lg-0">
                     <span class="services-badge">
                         <span class="services-badge-dot"></span>
@@ -51,7 +52,7 @@
                         backed by scientific expertise and modern technology.
                     </p>
                     @if ($limit)
-                        <a href="{{ url('/services') }}" class="services-cta">
+                        <a href="{{ url('/services') }}" class="services-cta cursor-zoom">
                             <span>View All Services</span>
                             <span class="services-cta-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
@@ -66,7 +67,7 @@
 
         <div class="row">
             @foreach ($services as $index => $service)
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4 mb-4 {{ $variant === 'home' ? 'home-reveal-item' : '' }}">
                     <div class="service-card h-100">
                         <span class="service-card-icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
