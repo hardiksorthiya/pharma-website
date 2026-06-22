@@ -13,6 +13,19 @@
             <h5 class="admin-form-section-title">Basic Information</h5>
 
             <div class="form-group">
+                <label for="sku">SKU</label>
+                <input type="text"
+                    class="form-control @error('sku') is-invalid @enderror"
+                    id="sku"
+                    name="sku"
+                    value="{{ old('sku', $product?->sku) }}"
+                    placeholder="e.g. SKU-001">
+                @error('sku')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="title">Title <span class="text-danger">*</span></label>
                 <input type="text"
                     class="form-control @error('title') is-invalid @enderror"

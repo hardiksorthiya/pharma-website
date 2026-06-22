@@ -53,6 +53,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('admin')->group(function () {
+        Route::get('products/bulk-template', [ProductController::class, 'downloadBulkTemplate'])
+            ->name('products.bulk-template');
+        Route::post('products/bulk-import', [ProductController::class, 'bulkImport'])
+            ->name('products.bulk-import');
+
         Route::resource('products', ProductController::class)
             ->except(['show']);
 
