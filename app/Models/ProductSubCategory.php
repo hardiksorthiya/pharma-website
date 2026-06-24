@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ProductCategory extends Model
+class ProductSubCategory extends Model
 {
     protected $fillable = [
+        'product_category_id',
         'title',
         'slug',
         'description',
@@ -22,14 +24,14 @@ class ProductCategory extends Model
         return asset('storage/'.$this->image);
     }
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function category(): BelongsTo
     {
-        return $this->hasMany(Product::class, 'product_category_id');
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
-    public function subCategories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(ProductSubCategory::class);
+        return $this->hasMany(Product::class, 'product_sub_category_id');
     }
 
     public function getRouteKeyName(): string

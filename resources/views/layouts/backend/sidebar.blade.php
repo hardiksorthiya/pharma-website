@@ -2,8 +2,8 @@
     $productsMenuActive = request()->routeIs(
         'products.*',
         'product-categories.*',
+        'product-sub-categories.*',
         'dosage-types.*',
-        'packings.*',
         'therapeutic-classes.*',
         'specifications.*'
     );
@@ -11,8 +11,8 @@
     $productMenuItems = [
         ['label' => 'All Products', 'route' => 'products.index', 'active' => request()->routeIs('products.*')],
         ['label' => 'Product Categories', 'route' => 'product-categories.index', 'active' => request()->routeIs('product-categories.*')],
+        ['label' => 'Product Sub Categories', 'route' => 'product-sub-categories.index', 'active' => request()->routeIs('product-sub-categories.*')],
         ['label' => 'Dosage Types', 'route' => 'dosage-types.index', 'active' => request()->routeIs('dosage-types.*')],
-        ['label' => 'Packings', 'route' => 'packings.index', 'active' => request()->routeIs('packings.*')],
         ['label' => 'Therapeutic Classes', 'route' => 'therapeutic-classes.index', 'active' => request()->routeIs('therapeutic-classes.*')],
         ['label' => 'Specifications', 'route' => 'specifications.index', 'active' => request()->routeIs('specifications.*')],
     ];

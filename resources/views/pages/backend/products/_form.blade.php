@@ -1,9 +1,12 @@
 @php
     $product = $product ?? null;
-    $selectedCategories = old('product_categories', $product ? $product->categories->pluck('id')->all() : []);
+    $selectedCategoryId = old('product_category_id', $product?->product_category_id);
+    $selectedSubCategoryId = old('product_sub_category_id', $product?->product_sub_category_id);
+    $initialSubCategories = $productSubCategories->filter(function ($subCategory) use ($selectedCategoryId) {
+        return $selectedCategoryId && (string) $subCategory->product_category_id === (string) $selectedCategoryId;
+    });
     $selectedDosageTypes = old('dosage_types', $product ? $product->dosageTypes->pluck('id')->all() : []);
     $selectedTherapeuticClasses = old('therapeutic_classes', $product ? $product->therapeuticClasses->pluck('id')->all() : []);
-    $selectedPackings = old('packings', $product ? $product->packings->pluck('id')->all() : []);
     $selectedSpecifications = old('specifications', $product ? $product->specifications->pluck('id')->all() : []);
 @endphp
 
@@ -64,7 +67,7 @@
                 @enderror
             </div>
 
-            <div class="form-group mb-0">
+            <div class="form-group">
                 <label for="end_use">End Use</label>
                 <textarea
                     class="form-control admin-textarea @error('end_use') is-invalid @enderror"
@@ -76,19 +79,36 @@
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
             </div>
+
+            <div class="form-group">
+                <label for="available_strengths">Available Strengths</label>
+                <input type="text"
+                    class="form-control @error('available_strengths') is-invalid @enderror"
+                    id="available_strengths"
+                    name="available_strengths"
+                    value="{{ old('available_strengths', $product?->available_strengths) }}"
+                    placeholder="e.g. 500mg, 250mg, 125mg">
+                @error('available_strengths')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group mb-0">
+                <label for="packing">Packing</label>
+                <input type="text"
+                    class="form-control @error('packing') is-invalid @enderror"
+                    id="packing"
+                    name="packing"
+                    value="{{ old('packing', $product?->packing) }}"
+                    placeholder="e.g. 25kg Drum">
+                @error('packing')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
         <div class="admin-form-section mb-4">
             <h5 class="admin-form-section-title">Classifications</h5>
-
-            <x-backend.checkbox-multiselect
-                id="product_categories"
-                name="product_categories"
-                label="Product Categories"
-                :items="$productCategories"
-                label-key="title"
-                :selected="$selectedCategories"
-                placeholder="Select product categories" />
 
             <x-backend.checkbox-multiselect
                 id="dosage_types"
@@ -107,14 +127,6 @@
                 placeholder="Select therapeutic classes" />
 
             <x-backend.checkbox-multiselect
-                id="packings"
-                name="packings"
-                label="Packings"
-                :items="$packings"
-                :selected="$selectedPackings"
-                placeholder="Select packings" />
-
-            <x-backend.checkbox-multiselect
                 id="specifications"
                 name="specifications"
                 label="Specifications"
@@ -126,6 +138,41 @@
     </div>
 
     <div class="col-lg-4">
+        <div class="admin-form-section mb-4">
+            <h5 class="admin-form-section-title">Category</h5>
+
+            <x-backend.single-select
+                id="product_category_id"
+                name="product_category_id"
+                label="Product Category"
+                :items="$productCategories"
+                label-key="title"
+                :selected="$selectedCategoryId"
+                placeholder="Select category" />
+
+            <x-backend.single-select
+                id="product_sub_category_id"
+                name="product_sub_category_id"
+                label="Product Sub Category"
+                :items="$initialSubCategories"
+                label-key="title"
+                :selected="$selectedSubCategoryId"
+                placeholder="Select sub category"
+                class="mb-0" />
+
+            @php
+                $subCategoryData = $productSubCategories->map(function ($subCategory) {
+                    return [
+                        'id' => $subCategory->id,
+                        'title' => $subCategory->title,
+                        'product_category_id' => $subCategory->product_category_id,
+                    ];
+                })->values();
+            @endphp
+
+            <script type="application/json" id="productSubCategoryData">@json($subCategoryData)</script>
+        </div>
+
         <div class="admin-form-section mb-4">
             <h5 class="admin-form-section-title">Feature Image</h5>
 

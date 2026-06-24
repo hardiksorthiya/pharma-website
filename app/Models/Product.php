@@ -3,16 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
     protected $fillable = [
         'sku',
+        'product_category_id',
+        'product_sub_category_id',
         'title',
         'slug',
         'cas_no',
         'end_use',
+        'available_strengths',
+        'packing',
         'meta_title',
         'meta_description',
         'keywords',
@@ -21,11 +26,26 @@ class Product extends Model
 
     public function getFeatureImageUrlAttribute(): ?string
     {
-        if (! $this->feature_image) {
-            return null;
+        if ($this->feature_image) {
+            return asset('storage/'.$this->feature_image);
         }
 
-        return asset('storage/'.$this->feature_image);
+        return Setting::current()->logo_url;
+    }
+
+    public function usesDefaultFeatureImage(): bool
+    {
+        return ! $this->feature_image;
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
+    }
+
+    public function subCategory(): BelongsTo
+    {
+        return $this->belongsTo(ProductSubCategory::class, 'product_sub_category_id');
     }
 
     public function categories(): BelongsToMany
@@ -41,11 +61,6 @@ class Product extends Model
     public function therapeuticClasses(): BelongsToMany
     {
         return $this->belongsToMany(TherapeuticClass::class, 'product_therapeutic_class');
-    }
-
-    public function packings(): BelongsToMany
-    {
-        return $this->belongsToMany(Packing::class, 'product_packing');
     }
 
     public function specifications(): BelongsToMany

@@ -3,19 +3,34 @@
 
     var productsItems = document.getElementById('productsItems');
     var categoryFilter = document.getElementById('productCategoryFilter');
+    var subCategoryFilter = document.getElementById('productSubCategoryFilter');
     var searchInput = document.getElementById('productSearch');
     var gridViewBtn = document.getElementById('productGridView');
     var listViewBtn = document.getElementById('productListView');
     var filterEmpty = document.getElementById('productsFilterEmpty');
+    var subCategoryDataEl = document.getElementById('productSubCategoryFilterData');
 
     if (!productsItems) {
         return;
     }
 
     var productItems = productsItems.querySelectorAll('[data-product-item]');
+    var subCategories = [];
+
+    if (subCategoryDataEl) {
+        try {
+            subCategories = JSON.parse(subCategoryDataEl.textContent);
+        } catch (error) {
+            subCategories = [];
+        }
+    }
 
     function getSelectedCategory() {
         return categoryFilter ? categoryFilter.value : '';
+    }
+
+    function getSelectedSubCategory() {
+        return subCategoryFilter && !subCategoryFilter.disabled ? subCategoryFilter.value : '';
     }
 
     function getSearchQuery() {
@@ -32,6 +47,16 @@
         return categories.indexOf(categoryId) !== -1;
     }
 
+    function productMatchesSubCategory(item, subCategoryId) {
+        if (!subCategoryId) {
+            return true;
+        }
+
+        var subCategory = item.getAttribute('data-sub-categories') || '';
+
+        return subCategory === subCategoryId;
+    }
+
     function productMatchesSearch(item, query) {
         if (!query) {
             return true;
@@ -42,13 +67,43 @@
         return searchText.indexOf(query) !== -1;
     }
 
+    function populateSubCategoryOptions(categoryId, selectedSubCategoryId) {
+        if (!subCategoryFilter) {
+            return;
+        }
+
+        var options = '<option value="">All Sub Categories</option>';
+        var hasOptions = false;
+
+        if (categoryId) {
+            subCategories.forEach(function (subCategory) {
+                if (String(subCategory.product_category_id) === String(categoryId)) {
+                    hasOptions = true;
+                    var selected = String(subCategory.id) === String(selectedSubCategoryId) ? ' selected' : '';
+                    options += '<option value="' + subCategory.id + '"' + selected + '>' + subCategory.title + '</option>';
+                }
+            });
+        }
+
+        subCategoryFilter.innerHTML = options;
+        subCategoryFilter.disabled = !categoryId || !hasOptions;
+
+        if (!categoryId || !hasOptions) {
+            subCategoryFilter.value = '';
+        }
+    }
+
     function applyFilters() {
         var categoryId = getSelectedCategory();
+        var subCategoryId = getSelectedSubCategory();
         var query = getSearchQuery();
         var visibleCount = 0;
 
         productItems.forEach(function (item) {
-            var isVisible = productMatchesCategory(item, categoryId) && productMatchesSearch(item, query);
+            var isVisible =
+                productMatchesCategory(item, categoryId) &&
+                productMatchesSubCategory(item, subCategoryId) &&
+                productMatchesSearch(item, query);
 
             item.classList.toggle('d-none', !isVisible);
 
@@ -76,8 +131,17 @@
         }
     }
 
+    function onCategoryChange() {
+        populateSubCategoryOptions(getSelectedCategory(), '');
+        applyFilters();
+    }
+
     if (categoryFilter) {
-        categoryFilter.addEventListener('change', applyFilters);
+        categoryFilter.addEventListener('change', onCategoryChange);
+    }
+
+    if (subCategoryFilter) {
+        subCategoryFilter.addEventListener('change', applyFilters);
     }
 
     if (searchInput) {
@@ -96,10 +160,13 @@
         });
     }
 
-    var urlCategory = new URLSearchParams(window.location.search).get('category');
+    var urlParams = new URLSearchParams(window.location.search);
+    var urlCategory = urlParams.get('category');
+    var urlSubCategory = urlParams.get('sub_category');
 
     if (categoryFilter && urlCategory) {
         categoryFilter.value = urlCategory;
+        populateSubCategoryOptions(urlCategory, urlSubCategory || '');
     }
 
     applyFilters();

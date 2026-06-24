@@ -1,22 +1,41 @@
 @php
     $companyActive = request()->is('about-us*', 'team*', 'research-and-development*', 'our-core-principles*');
+    $productsActive = request()->is('products*');
+
+    $productDropdownChildren = collect([
+        ['label' => 'All Products', 'url' => url('/products'), 'active' => request()->is('products') && ! request()->is('products/category*'), 'image' => null],
+    ])->merge(
+        ($headerProductCategories ?? collect())->map(function ($category) {
+            return [
+                'label' => $category->title,
+                'url' => route('frontend.products.category', $category),
+                'active' => request()->is('products/category/'.$category->slug) || request()->is('products/category/'.$category->slug.'/*'),
+                'image' => $category->image_url,
+            ];
+        })
+    );
 
     $navItems = [
         ['type' => 'link', 'label' => 'Home', 'url' => url('/'), 'active' => request()->is('/')],
-       
         [
             'type' => 'dropdown',
             'label' => 'Company',
             'active' => $companyActive,
             'children' => [
-                ['label' => 'About Us', 'url' => url('/about-us'), 'active' => request()->is('about-us')],
-                ['label' => 'Our Team', 'url' => url('/team'), 'active' => request()->is('team')],
-                ['label' => 'Research and Development', 'url' => url('/research-and-development'), 'active' => request()->is('research-and-development')],
-                ['label' => 'Our Core Principles', 'url' => url('/our-core-principles'), 'active' => request()->is('our-core-principles')],
+                ['label' => 'About Us', 'url' => url('/about-us'), 'active' => request()->is('about-us'), 'image' => null],
+                ['label' => 'Our Team', 'url' => url('/team'), 'active' => request()->is('team'), 'image' => null],
+                ['label' => 'Research and Development', 'url' => url('/research-and-development'), 'active' => request()->is('research-and-development'), 'image' => null],
+                ['label' => 'Our Core Principles', 'url' => url('/our-core-principles'), 'active' => request()->is('our-core-principles'), 'image' => null],
             ],
         ],
         ['type' => 'link', 'label' => 'Services', 'url' => url('/services'), 'active' => request()->is('services*')],
-        ['type' => 'link', 'label' => 'Products', 'url' => url('/products'), 'active' => request()->is('products*')],
+        [
+            'type' => 'dropdown',
+            'label' => 'Products',
+            'active' => $productsActive,
+            'dropdownClass' => 'header-dropdown--products',
+            'children' => $productDropdownChildren->all(),
+        ],
         ['type' => 'link', 'label' => 'Gallery', 'url' => url('/gallery'), 'active' => request()->is('gallery')],
         ['type' => 'link', 'label' => 'Events', 'url' => url('/events'), 'active' => request()->is('events*')],
         ['type' => 'link', 'label' => 'Blog', 'url' => url('/blog'), 'active' => request()->is('blog*')],
@@ -40,12 +59,17 @@
                                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                     </svg>
                                 </button>
-                                <ul class="header-dropdown">
+                                <ul class="header-dropdown {{ $item['dropdownClass'] ?? '' }}">
                                     @foreach ($item['children'] as $child)
                                         <li>
                                             <a href="{{ $child['url'] }}"
-                                                class="header-dropdown-link {{ $child['active'] ? 'active' : '' }}">
-                                                {{ $child['label'] }}
+                                                class="header-dropdown-link {{ ! empty($child['image']) ? 'header-dropdown-link--with-image' : '' }} {{ $child['active'] ? 'active' : '' }}">
+                                                @if (! empty($child['image']))
+                                                    <span class="header-dropdown-thumb">
+                                                        <img src="{{ $child['image'] }}" alt="">
+                                                    </span>
+                                                @endif
+                                                <span class="header-dropdown-text">{{ $child['label'] }}</span>
                                             </a>
                                         </li>
                                     @endforeach

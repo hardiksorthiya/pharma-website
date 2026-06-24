@@ -3,22 +3,43 @@
 @section('title', $product->meta_title ?: $product->title)
 
 @push('meta')
-    @if ($product->meta_description)
-        <meta name="description" content="{{ $product->meta_description }}">
-    @endif
-    @if ($product->keywords)
-        <meta name="keywords" content="{{ $product->keywords }}">
-    @endif
+    <x-frontend.seo-meta
+        :title="$product->meta_title ?: $product->title"
+        :description="$product->meta_description"
+        :keywords="$product->keywords"
+        :image="$product->feature_image_url"
+        :url="url('/products/'.$product->slug)"
+        type="product"
+    />
 @endpush
 
 @section('breadcrumb')
-    <x-frontend.page-hero
-        :title="$product->title"
-        :breadcrumbs="[
+    @php
+        $productBreadcrumbs = [
             ['label' => 'Home', 'url' => url('/')],
             ['label' => 'Products', 'url' => url('/products')],
-            ['label' => $product->title, 'url' => null],
-        ]"
+        ];
+
+        if ($product->category) {
+            $productBreadcrumbs[] = [
+                'label' => $product->category->title,
+                'url' => route('frontend.products.category', $product->category),
+            ];
+        }
+
+        if ($product->category && $product->subCategory) {
+            $productBreadcrumbs[] = [
+                'label' => $product->subCategory->title,
+                'url' => route('frontend.products.sub-category', [$product->category, $product->subCategory]),
+            ];
+        }
+
+        $productBreadcrumbs[] = ['label' => $product->title, 'url' => null];
+    @endphp
+
+    <x-frontend.page-hero
+        :title="$product->title"
+        :breadcrumbs="$productBreadcrumbs"
     />
 @endsection
 

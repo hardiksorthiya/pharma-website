@@ -1,9 +1,9 @@
 @php
     $detailSections = collect([
         ['label' => 'End Use', 'type' => 'text', 'value' => $product->end_use],
+        ['label' => 'Packing', 'type' => 'text', 'value' => $product->packing],
         ['label' => 'Dosage Types', 'type' => 'chips', 'items' => $product->dosageTypes],
         ['label' => 'Therapeutic Classes', 'type' => 'chips', 'items' => $product->therapeuticClasses],
-        ['label' => 'Packings', 'type' => 'chips', 'items' => $product->packings],
         ['label' => 'Specifications', 'type' => 'chips', 'items' => $product->specifications],
     ])->filter(function ($section) {
         if ($section['type'] === 'text') {
@@ -27,8 +27,10 @@
             <div class="row no-gutters product-detail-row">
                 <div class="col-lg-5 product-detail-media-col">
                     <div class="product-detail-image-wrap">
-                        @if ($product->feature_image)
-                            <img src="{{ $product->feature_image_url }}" alt="{{ $product->title }}" class="product-detail-image">
+                        @if ($product->feature_image_url)
+                            <img src="{{ $product->feature_image_url }}"
+                                alt="{{ $product->title }}"
+                                class="product-detail-image {{ $product->usesDefaultFeatureImage() ? 'product-detail-image--default' : '' }}">
                         @else
                             <div class="product-detail-image product-detail-image--placeholder" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 16 16">
@@ -42,11 +44,14 @@
                 <div class="col-lg-7 product-detail-content-col">
                     <div class="product-detail-content">
                         <div class="product-detail-header">
-                            @if ($product->categories->isNotEmpty())
+                            @if ($product->category || $product->subCategory)
                                 <div class="product-detail-tags">
-                                    @foreach ($product->categories as $category)
-                                        <span class="product-detail-tag">{{ $category->title }}</span>
-                                    @endforeach
+                                    @if ($product->category)
+                                        <span class="product-detail-tag">{{ $product->category->title }}</span>
+                                    @endif
+                                    @if ($product->subCategory)
+                                        <span class="product-detail-tag">{{ $product->subCategory->title }}</span>
+                                    @endif
                                 </div>
                             @endif
 

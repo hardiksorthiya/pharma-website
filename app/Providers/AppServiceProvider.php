@@ -44,5 +44,12 @@ class AppServiceProvider extends ServiceProvider
                 ProductCategory::query()->orderBy('title')->get(['id', 'title', 'slug'])
             );
         });
+
+        View::composer('layouts.frontend.header', function ($view) {
+            $view->with(
+                'headerProductCategories',
+                ProductCategory::query()->orderBy('title')->get(['id', 'title', 'slug', 'image'])
+            );
+        });
     }
 }

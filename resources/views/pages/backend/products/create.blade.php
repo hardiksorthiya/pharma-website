@@ -25,5 +25,6 @@
 
 @push('scripts')
     <script src="{{ asset('assets/js/checkbox-multiselect.js') }}"></script>
+    <script src="{{ asset('assets/js/backend/single-select.js') }}"></script>
     <script src="{{ asset('assets/js/backend/product-form.js') }}"></script>
 @endpush

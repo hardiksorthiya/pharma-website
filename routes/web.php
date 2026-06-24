@@ -6,11 +6,11 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DosageTypeController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\GalleryController;
-use App\Http\Controllers\Backend\PackingController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SpecificationController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TherapeuticClassController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
@@ -34,6 +34,8 @@ Route::get('/research-and-development', [ResearchAndDevelopmentController::class
 Route::get('/services', [ServiceController::class, 'index']);
 Route::get('/categories', [FrontendCategoryController::class, 'index']);
 Route::get('/products', [FrontendProductController::class, 'index']);
+Route::get('/products/category/{category:slug}', [FrontendProductController::class, 'category'])->name('frontend.products.category');
+Route::get('/products/category/{category:slug}/{subCategory:slug}', [FrontendProductController::class, 'subCategory'])->name('frontend.products.sub-category');
 Route::get('/products/{product:slug}', [FrontendProductController::class, 'show']);
 Route::get('/team', [TeamController::class, 'index']);
 Route::get('/blog', [FrontendBlogController::class, 'index'])->name('frontend.blog.index');
@@ -75,12 +77,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->except(['show'])
         ->parameters(['product-categories' => 'category']);
 
+    Route::resource('product-sub-categories', SubCategoryController::class)
+        ->except(['show'])
+        ->parameters(['product-sub-categories' => 'subCategory']);
+
     Route::resource('dosage-types', DosageTypeController::class)
         ->except(['show'])
         ->parameters(['dosage-types' => 'dosageType']);
-
-    Route::resource('packings', PackingController::class)
-        ->except(['show']);
 
     Route::resource('therapeutic-classes', TherapeuticClassController::class)
         ->except(['show'])

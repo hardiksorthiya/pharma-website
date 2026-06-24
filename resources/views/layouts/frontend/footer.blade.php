@@ -33,7 +33,7 @@
                 <ul class="footer-links">
                     @forelse ($footerProductCategories as $category)
                         <li>
-                            <a href="{{ url('/products?category=' . $category->id) }}">{{ $category->title }}</a>
+                            <a href="{{ route('frontend.products.category', $category) }}">{{ $category->title }}</a>
                         </li>
                     @empty
                         <li><span class="footer-links-empty">No categories yet</span></li>

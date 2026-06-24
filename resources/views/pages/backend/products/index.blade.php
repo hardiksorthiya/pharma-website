@@ -54,9 +54,9 @@
                             <th>Image</th>
                             <th>SKU</th>
                             <th>Title</th>
-                            <th>Slug</th>
+                            <th>Category</th>
+                            <th>Sub Category</th>
                             <th>CAS No.</th>
-                            <th>Categories</th>
                             <th class="text-right">Actions</th>
                         </tr>
                     </thead>
@@ -64,19 +64,19 @@
                         @forelse ($products as $product)
                             <tr>
                                 <td>
-                                    @if ($product->feature_image)
-                                        <img src="{{ $product->feature_image_url }}" alt="{{ $product->title }}" class="admin-table-thumb">
+                                    @if ($product->feature_image_url)
+                                        <img src="{{ $product->feature_image_url }}"
+                                            alt="{{ $product->title }}"
+                                            class="admin-table-thumb {{ $product->usesDefaultFeatureImage() ? 'admin-table-thumb--default' : '' }}">
                                     @else
                                         <span class="text-muted">—</span>
                                     @endif
                                 </td>
                                 <td><code>{{ $product->sku ?: '—' }}</code></td>
                                 <td class="font-weight-semibold">{{ $product->title }}</td>
-                                <td><code>{{ $product->slug }}</code></td>
+                                <td>{{ $product->category?->title ?: '—' }}</td>
+                                <td>{{ $product->subCategory?->title ?: '—' }}</td>
                                 <td>{{ $product->cas_no ?: '—' }}</td>
-                                <td class="admin-table-desc">
-                                    {{ $product->categories->pluck('title')->implode(', ') ?: '—' }}
-                                </td>
                                 <td class="text-right text-nowrap">
                                     <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-auth-outline btn-outline-secondary mr-1">Edit</a>
                                     <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this product?');">
@@ -138,7 +138,8 @@
                                             <th>slug</th>
                                             <th>cas_no</th>
                                             <th>end_use</th>
-                                            <th>categories</th>
+                                            <th>category</th>
+                                            <th>sub_category</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,13 +149,15 @@
                                             <td>paracetamol-api</td>
                                             <td>103-90-2</td>
                                             <td>Pain relief API</td>
-                                            <td>API|Intermediates</td>
+                                            <td>API</td>
+                                            <td>Analgesics API</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <small class="form-text text-muted mt-2">
-                                Columns: sku, title, slug, cas_no, end_use, meta_title, meta_description, keywords, categories, dosage_types, therapeutic_classes, packings, specifications.
+                                Columns: sku, title, slug, cas_no, end_use, available_strengths, packing, meta_title, meta_description, keywords, category, sub_category, dosage_types, therapeutic_classes, specifications.
+                                Category and sub category use exact titles from admin. Sub category must belong to the selected category.
                                 SKU and title are required. Use <code>|</code> to separate multiple values in relation columns. Re-uploading the same SKU updates the existing product.
                             </small>
                         </div>

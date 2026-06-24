@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\DosageType;
-use App\Models\Packing;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductSubCategory;
 use App\Models\Specification;
 use App\Models\TherapeuticClass;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -21,7 +22,7 @@ class ProductController extends Controller
     public function index(): View
     {
         $products = Product::query()
-            ->with(['categories', 'dosageTypes'])
+            ->with(['category', 'subCategory', 'dosageTypes'])
             ->latest()
             ->paginate(10);
 
@@ -39,10 +40,14 @@ class ProductController extends Controller
 
         $product = Product::create([
             'sku' => $validated['sku'] ?? null,
+            'product_category_id' => $validated['product_category_id'] ?? null,
+            'product_sub_category_id' => $validated['product_sub_category_id'] ?? null,
             'title' => $validated['title'],
             'slug' => $this->resolveSlug($validated['slug'] ?? null, $validated['title']),
             'cas_no' => $validated['cas_no'] ?? null,
             'end_use' => $validated['end_use'] ?? null,
+            'available_strengths' => $validated['available_strengths'] ?? null,
+            'packing' => $validated['packing'] ?? null,
             'meta_title' => $validated['meta_title'] ?? null,
             'meta_description' => $validated['meta_description'] ?? null,
             'keywords' => $validated['keywords'] ?? null,
@@ -61,10 +66,10 @@ class ProductController extends Controller
     public function edit(Product $product): View
     {
         $product->load([
-            'categories',
+            'category',
+            'subCategory',
             'dosageTypes',
             'therapeuticClasses',
-            'packings',
             'specifications',
         ]);
 
@@ -80,6 +85,8 @@ class ProductController extends Controller
 
         $data = [
             'sku' => $validated['sku'] ?? null,
+            'product_category_id' => $validated['product_category_id'] ?? null,
+            'product_sub_category_id' => $validated['product_sub_category_id'] ?? null,
             'title' => $validated['title'],
             'slug' => $this->resolveSlug(
                 $validated['slug'] ?? null,
@@ -88,6 +95,8 @@ class ProductController extends Controller
             ),
             'cas_no' => $validated['cas_no'] ?? null,
             'end_use' => $validated['end_use'] ?? null,
+            'available_strengths' => $validated['available_strengths'] ?? null,
+            'packing' => $validated['packing'] ?? null,
             'meta_title' => $validated['meta_title'] ?? null,
             'meta_description' => $validated['meta_description'] ?? null,
             'keywords' => $validated['keywords'] ?? null,
@@ -132,13 +141,15 @@ class ProductController extends Controller
                 'paracetamol-api',
                 '103-90-2',
                 'Used in pain relief and fever reduction formulations.',
+                '500mg, 250mg, 125mg',
+                '25kg Drum',
                 'Paracetamol API Supplier',
                 'High-quality paracetamol active pharmaceutical ingredient.',
                 'paracetamol, api, pain relief',
-                'API|Intermediates',
+                'API',
+                'Analgesics API',
                 'Tablet|Capsule',
                 'Analgesics',
-                '25kg Drum|50kg Drum',
                 'USP|EP',
             ],
             [
@@ -147,13 +158,15 @@ class ProductController extends Controller
                 '',
                 '61336-28-9',
                 'Broad-spectrum antibiotic intermediate.',
+                '250mg, 125mg',
+                '25kg Drum',
                 'Amoxicillin Trihydrate',
                 'Pharmaceutical grade amoxicillin trihydrate.',
                 'amoxicillin, antibiotic',
                 'API',
+                'Antibiotics API',
                 'Capsule',
                 'Antibiotics',
-                '25kg Drum',
                 'BP',
             ],
         ];
@@ -232,8 +245,12 @@ class ProductController extends Controller
                     ->where('sku', $data['sku'])
                     ->first();
 
+                $categoryId = $this->resolveSingleRelationId(ProductCategory::class, 'title', $data['category']);
+
                 $productData = [
                     'sku' => $data['sku'],
+                    'product_category_id' => $categoryId,
+                    'product_sub_category_id' => $this->resolveSubCategoryId($data['sub_category'], $categoryId),
                     'title' => $data['title'],
                     'slug' => $this->resolveSlug(
                         $data['slug'] ?: null,
@@ -242,6 +259,8 @@ class ProductController extends Controller
                     ),
                     'cas_no' => $data['cas_no'] ?: null,
                     'end_use' => $data['end_use'] ?: null,
+                    'available_strengths' => $data['available_strengths'] ?: null,
+                    'packing' => $data['packing'] ?: null,
                     'meta_title' => $data['meta_title'] ?: null,
                     'meta_description' => $data['meta_description'] ?: null,
                     'keywords' => $data['keywords'] ?: null,
@@ -257,10 +276,8 @@ class ProductController extends Controller
                 }
 
                 $this->syncRelations($product, [
-                    'product_categories' => $this->resolveRelationIds(ProductCategory::class, 'title', $data['categories']),
                     'dosage_types' => $this->resolveRelationIds(DosageType::class, 'name', $data['dosage_types']),
                     'therapeutic_classes' => $this->resolveRelationIds(TherapeuticClass::class, 'name', $data['therapeutic_classes']),
-                    'packings' => $this->resolveRelationIds(Packing::class, 'name', $data['packings']),
                     'specifications' => $this->resolveRelationIds(Specification::class, 'name', $data['specifications']),
                 ]);
             } catch (\Throwable $exception) {
@@ -292,13 +309,15 @@ class ProductController extends Controller
             'slug',
             'cas_no',
             'end_use',
+            'available_strengths',
+            'packing',
             'meta_title',
             'meta_description',
             'keywords',
-            'categories',
+            'category',
+            'sub_category',
             'dosage_types',
             'therapeutic_classes',
-            'packings',
             'specifications',
         ];
     }
@@ -375,13 +394,45 @@ class ProductController extends Controller
         return array_values(array_unique($ids));
     }
 
+    /**
+     * @param  class-string  $modelClass
+     */
+    private function resolveSingleRelationId(string $modelClass, string $nameColumn, ?string $value): ?int
+    {
+        if (! $value) {
+            return null;
+        }
+
+        $record = $modelClass::query()
+            ->whereRaw('LOWER('.$nameColumn.') = ?', [strtolower(trim($value))])
+            ->first();
+
+        return $record?->id;
+    }
+
+    private function resolveSubCategoryId(?string $value, ?int $categoryId): ?int
+    {
+        if (! $value) {
+            return null;
+        }
+
+        $query = ProductSubCategory::query()
+            ->whereRaw('LOWER(title) = ?', [strtolower(trim($value))]);
+
+        if ($categoryId) {
+            $query->where('product_category_id', $categoryId);
+        }
+
+        return $query->first()?->id;
+    }
+
     private function formOptions(): array
     {
         return [
             'productCategories' => ProductCategory::query()->orderBy('title')->get(),
+            'productSubCategories' => ProductSubCategory::query()->orderBy('title')->get(),
             'dosageTypes' => DosageType::query()->orderBy('name')->get(),
             'therapeuticClasses' => TherapeuticClass::query()->orderBy('name')->get(),
-            'packings' => Packing::query()->orderBy('name')->get(),
             'specifications' => Specification::query()->orderBy('name')->get(),
         ];
     }
@@ -406,18 +457,25 @@ class ProductController extends Controller
             'slug' => $slugRule,
             'cas_no' => ['nullable', 'string', 'max:255'],
             'end_use' => ['nullable', 'string'],
+            'available_strengths' => ['nullable', 'string'],
+            'packing' => ['nullable', 'string'],
             'meta_title' => ['nullable', 'string', 'max:255'],
             'meta_description' => ['nullable', 'string'],
             'keywords' => ['nullable', 'string', 'max:500'],
             'feature_image' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
-            'product_categories' => ['nullable', 'array'],
-            'product_categories.*' => ['exists:product_categories,id'],
+            'product_category_id' => ['nullable', 'exists:product_categories,id'],
+            'product_sub_category_id' => [
+                'nullable',
+                Rule::exists('product_sub_categories', 'id')->where(function ($query) use ($request) {
+                    if ($request->input('product_category_id')) {
+                        $query->where('product_category_id', $request->input('product_category_id'));
+                    }
+                }),
+            ],
             'dosage_types' => ['nullable', 'array'],
             'dosage_types.*' => ['exists:dosage_types,id'],
             'therapeutic_classes' => ['nullable', 'array'],
             'therapeutic_classes.*' => ['exists:therapeutic_classes,id'],
-            'packings' => ['nullable', 'array'],
-            'packings.*' => ['exists:packings,id'],
             'specifications' => ['nullable', 'array'],
             'specifications.*' => ['exists:specifications,id'],
         ]);
@@ -425,10 +483,8 @@ class ProductController extends Controller
 
     private function syncRelations(Product $product, array $validated): void
     {
-        $product->categories()->sync($validated['product_categories'] ?? []);
         $product->dosageTypes()->sync($validated['dosage_types'] ?? []);
         $product->therapeuticClasses()->sync($validated['therapeutic_classes'] ?? []);
-        $product->packings()->sync($validated['packings'] ?? []);
         $product->specifications()->sync($validated['specifications'] ?? []);
     }
 

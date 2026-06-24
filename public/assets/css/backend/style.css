@@ -692,6 +692,78 @@ textarea {
     text-align: center;
 }
 
+.admin-single-select-options {
+    overflow-y: auto;
+    max-height: 220px;
+}
+
+.admin-single-select-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 0.85rem;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #0a2540;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.admin-single-select-option:hover,
+.admin-single-select-option:focus {
+    outline: none;
+    background: #f8fafc;
+}
+
+.admin-single-select-option.is-hidden {
+    display: none;
+}
+
+.admin-single-select-option.is-selected {
+    background: rgba(13, 110, 110, 0.08);
+    color: var(--primary-sorath-color);
+}
+
+.admin-single-select-option-text {
+    flex: 1;
+    line-height: 1.35;
+}
+
+.admin-single-select-option-check {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    background: #fff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-single-select-option.is-selected .admin-single-select-option-check {
+    background: var(--primary-sorath-color);
+    border-color: var(--primary-sorath-color);
+}
+
+.admin-single-select-option.is-selected .admin-single-select-option-check::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
 .admin-content .admin-file-input {
     display: block;
     padding: 0.5rem 0;
@@ -704,6 +776,12 @@ textarea {
     object-fit: cover;
     border-radius: 10px;
     border: 1px solid #e8eef3;
+}
+
+.admin-table-thumb--default {
+    object-fit: contain;
+    padding: 6px;
+    background: #fff;
 }
 
 .admin-image-preview img {
