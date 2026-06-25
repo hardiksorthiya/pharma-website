@@ -11,13 +11,22 @@ use Illuminate\View\View;
 
 class SpecificationController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $specifications = Specification::query()
-            ->latest()
-            ->paginate(10);
+        $search = trim((string) $request->query('search', ''));
 
-        return view('pages.backend.specifications.index', compact('specifications'));
+        $specifications = Specification::query()
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('slug', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('pages.backend.specifications.index', compact('specifications', 'search'));
     }
 
     public function create(): View

@@ -11,13 +11,22 @@ use Illuminate\View\View;
 
 class DosageTypeController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $dosageTypes = DosageType::query()
-            ->latest()
-            ->paginate(10);
+        $search = trim((string) $request->query('search', ''));
 
-        return view('pages.backend.dosage-types.index', compact('dosageTypes'));
+        $dosageTypes = DosageType::query()
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('slug', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('pages.backend.dosage-types.index', compact('dosageTypes', 'search'));
     }
 
     public function create(): View

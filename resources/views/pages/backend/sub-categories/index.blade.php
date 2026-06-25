@@ -20,6 +20,10 @@
         </div>
     @endif
 
+    <x-backend.search-form
+        placeholder="Search by title, category, slug..."
+        :value="$search" />
+
     <div class="card admin-card">
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -60,8 +64,12 @@
                         @empty
                             <tr>
                                 <td colspan="6" class="text-center text-muted py-5">
-                                    No product sub categories yet.
-                                    <a href="{{ route('product-sub-categories.create') }}" class="admin-link">Add your first sub category</a>.
+                                    @if ($search)
+                                        No sub categories found for "{{ $search }}".
+                                    @else
+                                        No product sub categories yet.
+                                        <a href="{{ route('product-sub-categories.create') }}" class="admin-link">Add your first sub category</a>.
+                                    @endif
                                 </td>
                             </tr>
                         @endforelse

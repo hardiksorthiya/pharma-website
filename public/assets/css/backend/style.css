@@ -393,6 +393,10 @@ textarea {
     border-left: 4px solid #dc3545;
 }
 
+.admin-search-form {
+    max-width: 480px;
+}
+
 .admin-content .form-control {
     border-radius: 50rem;
     height: 48px;

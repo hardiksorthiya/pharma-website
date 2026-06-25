@@ -19,14 +19,27 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $search = trim((string) $request->query('search', ''));
+
         $products = Product::query()
             ->with(['category', 'subCategory', 'dosageTypes'])
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', "%{$search}%")
+                        ->orWhere('sku', 'like', "%{$search}%")
+                        ->orWhere('cas_no', 'like', "%{$search}%")
+                        ->orWhere('slug', 'like', "%{$search}%")
+                        ->orWhereHas('category', fn ($query) => $query->where('title', 'like', "%{$search}%"))
+                        ->orWhereHas('subCategory', fn ($query) => $query->where('title', 'like', "%{$search}%"));
+                });
+            })
             ->latest()
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
-        return view('pages.backend.products.index', compact('products'));
+        return view('pages.backend.products.index', compact('products', 'search'));
     }
 
     public function create(): View

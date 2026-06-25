@@ -45,6 +45,10 @@
         </div>
     @endif
 
+    <x-backend.search-form
+        placeholder="Search by title, SKU, CAS no., category..."
+        :value="$search" />
+
     <div class="card admin-card">
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -89,8 +93,12 @@
                         @empty
                             <tr>
                                 <td colspan="7" class="text-center text-muted py-5">
-                                    No products yet.
-                                    <a href="{{ route('products.create') }}" class="admin-link">Add your first product</a>.
+                                    @if ($search)
+                                        No products found for "{{ $search }}".
+                                    @else
+                                        No products yet.
+                                        <a href="{{ route('products.create') }}" class="admin-link">Add your first product</a>.
+                                    @endif
                                 </td>
                             </tr>
                         @endforelse

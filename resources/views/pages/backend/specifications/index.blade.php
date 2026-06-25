@@ -20,6 +20,10 @@
         </div>
     @endif
 
+    <x-backend.search-form
+        placeholder="Search by name or slug..."
+        :value="$search" />
+
     <div class="card admin-card">
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -48,8 +52,12 @@
                         @empty
                             <tr>
                                 <td colspan="3" class="text-center text-muted py-5">
-                                    No specifications yet.
-                                    <a href="{{ route('specifications.create') }}" class="admin-link">Add your first specification</a>.
+                                    @if ($search)
+                                        No specifications found for "{{ $search }}".
+                                    @else
+                                        No specifications yet.
+                                        <a href="{{ route('specifications.create') }}" class="admin-link">Add your first specification</a>.
+                                    @endif
                                 </td>
                             </tr>
                         @endforelse
