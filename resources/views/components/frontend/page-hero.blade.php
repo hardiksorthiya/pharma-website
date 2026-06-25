@@ -2,7 +2,7 @@
     'title' => '',
     'description' => null,
     'breadcrumbs' => null,
-    'backgroundImage' => 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80',
+    'backgroundImage' => null,
 ])
 
 @php
@@ -10,10 +10,12 @@
         ['label' => 'Home', 'url' => url('/')],
         ['label' => $title, 'url' => null],
     ];
+
+    $heroBackground = $backgroundImage ?: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80';
 @endphp
 
 <section class="about-page-hero">
-    <div class="about-page-hero-bg" style="background-image: url('{{ $backgroundImage }}');"></div>
+    <div class="about-page-hero-bg" style="background-image: url('{{ $heroBackground }}');"></div>
     <div class="about-page-hero-overlay" aria-hidden="true"></div>
     <div class="container about-page-hero-container">
         <h1 class="about-page-hero-title">{{ $title }}</h1>
