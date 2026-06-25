@@ -1,6 +1,7 @@
 @php
     $detailSections = collect([
         ['label' => 'End Use', 'type' => 'text', 'value' => $product->end_use],
+        ['label' => 'Available Strengths', 'type' => 'text', 'value' => $product->available_strengths],
         ['label' => 'Packing', 'type' => 'text', 'value' => $product->packing],
         ['label' => 'Dosage Types', 'type' => 'chips', 'items' => $product->dosageTypes],
         ['label' => 'Therapeutic Classes', 'type' => 'chips', 'items' => $product->therapeuticClasses],
