@@ -28,7 +28,7 @@
                 ['label' => 'Our Core Principles', 'url' => url('/our-core-principles'), 'active' => request()->is('our-core-principles'), 'image' => null],
             ],
         ],
-        ['type' => 'link', 'label' => 'Services', 'url' => url('/services'), 'active' => request()->is('services*')],
+        // ['type' => 'link', 'label' => 'Services', 'url' => url('/services'), 'active' => request()->is('services*')],
         [
             'type' => 'dropdown',
             'label' => 'Products',

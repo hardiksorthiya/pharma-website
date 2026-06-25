@@ -44,7 +44,26 @@ class ProductController extends Controller
             ->orderBy('title')
             ->get();
 
-        return view('pages.frontend.product-category', compact('category', 'subCategories'));
+        if ($subCategories->isNotEmpty()) {
+            return view('pages.frontend.product-category', compact('category', 'subCategories'));
+        }
+
+        $products = Product::query()
+            ->with(['category', 'subCategory'])
+            ->where('product_category_id', $category->id)
+            ->orderBy('title')
+            ->get();
+
+        $enquiryProducts = Product::query()
+            ->orderBy('title')
+            ->get(['id', 'title']);
+
+        return view('pages.frontend.product-category', compact(
+            'category',
+            'subCategories',
+            'products',
+            'enquiryProducts'
+        ));
     }
 
     public function subCategory(ProductCategory $category, ProductSubCategory $subCategory): View
