@@ -3,7 +3,11 @@
 @section('title', 'About Us')
 
 @section('breadcrumb')
-    <x-frontend.page-hero title="About Us" />
+    <x-frontend.page-hero
+        title="About Us"
+        description="Leading Indian pharmaceutical exporter and global supplier of high-quality medicines, serving healthcare markets worldwide since 2007."
+        :backgroundImage="asset('assets/images/research.webp')"
+    />
 @endsection
 
 @section('content')

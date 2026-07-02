@@ -2028,6 +2028,328 @@ body.mobile-menu-open {
     }
 }
 
+/* About page — product tags, stats & stat card */
+.about-product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+}
+
+.about-product-tags li {
+    padding: 6px 14px;
+    border-radius: 50rem;
+    background: var(--text-sorath-light-color);
+    border: 1px solid var(--border-sorath-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-sorath-color);
+}
+
+.about-stats-row {
+    margin-top: 8px;
+}
+
+.about-stat {
+    text-align: center;
+    padding: 16px 8px;
+    border-radius: 12px;
+    background: var(--text-sorath-light-color);
+    border: 1px solid var(--border-sorath-color);
+}
+
+.about-stat-value {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0a2540;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.about-stat-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #6b7280;
+    line-height: 1.3;
+}
+
+.about-stat-card {
+    position: absolute;
+    bottom: 24px;
+    right: -10px;
+    z-index: 3;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1a8cff 0%, var(--primary-sorath-color) 100%);
+    color: var(--text-sorath-light-color);
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(26, 140, 255, 0.35);
+}
+
+.about-stat-card-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.about-stat-card-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.about-text--wide {
+    max-width: 560px;
+}
+
+/* About page — expertise cards */
+.about-expertise-cards {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-expertise-card {
+    height: 100%;
+    padding: 28px 22px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.about-expertise-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.about-expertise-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1a8cff 0%, #12b8c0 100%);
+    color: var(--text-sorath-light-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.about-expertise-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-sorath-light-color);
+    margin-bottom: 8px;
+}
+
+.about-expertise-card-text {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0;
+}
+
+/* About page — global presence & clients */
+.about-global-section {
+    padding: 80px 0;
+    background: var(--text-sorath-light-color);
+}
+
+.about-global-stat {
+    padding: 28px 20px;
+    border-radius: 16px;
+    background: #f5f8fa;
+    border: 1px solid var(--border-sorath-color);
+    text-align: center;
+    height: 100%;
+}
+
+.about-global-stat-value {
+    display: block;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #0a2540;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.about-global-stat-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.about-clients-block {
+    padding: 36px 40px;
+    border-radius: 20px;
+    background: #f5f8fa;
+    border: 1px solid var(--border-sorath-color);
+}
+
+.about-clients-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0a2540;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-clients-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-clients-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 50rem;
+    background: var(--text-sorath-light-color);
+    border: 1px solid var(--border-sorath-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0a2540;
+}
+
+.about-clients-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #1a8cff 0%, var(--primary-sorath-color) 100%);
+    color: var(--text-sorath-light-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* About page — commitment CTA */
+.about-commitment-section {
+    padding: 0 0 80px;
+    background: var(--text-sorath-light-color);
+}
+
+.about-commitment-card {
+    padding: 48px 44px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0a3d48 0%, #0d5c6a 45%, #0a4a55 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-commitment-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zm0-2l26-15V20L28 6 2 20v29l26 15z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 56px 100px;
+    pointer-events: none;
+}
+
+.about-commitment-card > .row {
+    position: relative;
+    z-index: 1;
+}
+
+.about-commitment-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-sorath-light-color);
+    margin-bottom: 16px;
+}
+
+.about-commitment-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 20px;
+    max-width: 640px;
+}
+
+.about-commitment-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-commitment-values li {
+    padding: 6px 16px;
+    border-radius: 50rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 991.98px) {
+    .about-global-section {
+        padding: 60px 0;
+    }
+
+    .about-stat-card {
+        right: 0;
+        bottom: 16px;
+    }
+
+    .about-expertise-cards {
+        margin-top: 36px;
+        padding-top: 36px;
+    }
+
+    .about-clients-block {
+        padding: 28px 24px;
+    }
+
+    .about-commitment-section {
+        padding-bottom: 60px;
+    }
+
+    .about-commitment-card {
+        padding: 36px 28px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .about-stat-value {
+        font-size: 1.1rem;
+    }
+
+    .about-stat-label {
+        font-size: 0.65rem;
+    }
+
+    .about-clients-list {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .about-clients-list li {
+        justify-content: flex-start;
+    }
+
+    .about-commitment-title {
+        font-size: 1.65rem;
+    }
+}
+
 /* Core principles section */
 .principles-section {
     padding: 80px 0;
