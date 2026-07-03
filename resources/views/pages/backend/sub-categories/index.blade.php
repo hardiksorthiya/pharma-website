@@ -51,7 +51,7 @@
                                 <td class="font-weight-semibold">{{ $subCategory->title }}</td>
                                 <td>{{ $subCategory->category?->title ?: '—' }}</td>
                                 <td><code>{{ $subCategory->slug }}</code></td>
-                                <td class="admin-table-desc">{{ Str::limit($subCategory->description, 80) }}</td>
+                                <td class="admin-table-desc">{{ Str::limit(strip_tags($subCategory->description), 80) }}</td>
                                 <td class="text-right text-nowrap">
                                     <a href="{{ route('product-sub-categories.edit', $subCategory) }}" class="btn btn-sm btn-auth-outline btn-outline-secondary mr-1">Edit</a>
                                     <form action="{{ route('product-sub-categories.destroy', $subCategory) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this sub category?');">

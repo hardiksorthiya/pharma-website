@@ -12,29 +12,12 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::query()
-            ->with(['category', 'subCategory'])
+        $categories = ProductCategory::query()
+            ->withCount('products')
             ->orderBy('title')
             ->get();
 
-        $categories = ProductCategory::query()
-            ->orderBy('title')
-            ->get(['id', 'title']);
-
-        $subCategories = ProductSubCategory::query()
-            ->orderBy('title')
-            ->get(['id', 'title', 'product_category_id']);
-
-        $enquiryProducts = Product::query()
-            ->orderBy('title')
-            ->get(['id', 'title']);
-
-        return view('pages.frontend.products', [
-            'products' => $products,
-            'categories' => $categories,
-            'subCategories' => $subCategories,
-            'enquiryProducts' => $enquiryProducts,
-        ]);
+        return view('pages.frontend.products', compact('categories'));
     }
 
     public function category(ProductCategory $category): View

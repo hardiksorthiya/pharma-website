@@ -1,5 +1,5 @@
 @php
-    $companyActive = request()->is('about-us*', 'team*', 'research-and-development*', 'our-core-principles*');
+    $companyActive = request()->is('about-us*', 'team*', 'research-and-development*', 'manufacturing-excellence*', 'our-core-principles*');
     $productsActive = request()->is('products*');
 
     $productDropdownChildren = collect([
@@ -15,6 +15,15 @@
         })
     );
 
+    $heroPages = [
+        '/',
+        'about-us', 'team', 'our-core-principles',
+        'research-and-development', 'manufacturing-excellence',
+        'our-capabilities', 'oncology-solutions', 'global-presence', 'careers',
+        'contact-us', 'categories', 'products', 'products/*',
+        'blog', 'blog/*',
+    ];
+
     $navItems = [
         ['type' => 'link', 'label' => 'Home', 'url' => url('/'), 'active' => request()->is('/')],
         [
@@ -24,11 +33,11 @@
             'children' => [
                 ['label' => 'About Us', 'url' => url('/about-us'), 'active' => request()->is('about-us'), 'image' => null],
                 ['label' => 'Our Team', 'url' => url('/team'), 'active' => request()->is('team'), 'image' => null],
-                ['label' => 'Research and Development', 'url' => url('/research-and-development'), 'active' => request()->is('research-and-development'), 'image' => null],
-                ['label' => 'Our Core Principles', 'url' => url('/our-core-principles'), 'active' => request()->is('our-core-principles'), 'image' => null],
+                ['label' => 'Research & Development', 'url' => url('/research-and-development'), 'active' => request()->is('research-and-development'), 'image' => null],
+                ['label' => 'Manufacturing Excellence', 'url' => url('/manufacturing-excellence'), 'active' => request()->is('manufacturing-excellence'), 'image' => null],
+                ['label' => 'Our Core Values', 'url' => url('/our-core-principles'), 'active' => request()->is('our-core-principles'), 'image' => null],
             ],
         ],
-        // ['type' => 'link', 'label' => 'Services', 'url' => url('/services'), 'active' => request()->is('services*')],
         [
             'type' => 'dropdown',
             'label' => 'Products',
@@ -36,14 +45,16 @@
             'dropdownClass' => 'header-dropdown--products',
             'children' => $productDropdownChildren->all(),
         ],
-        ['type' => 'link', 'label' => 'Gallery', 'url' => url('/gallery'), 'active' => request()->is('gallery')],
-        ['type' => 'link', 'label' => 'Events', 'url' => url('/events'), 'active' => request()->is('events*')],
+        ['type' => 'link', 'label' => 'Oncology Solutions', 'url' => url('/oncology-solutions'), 'active' => request()->is('oncology-solutions')],
+        ['type' => 'link', 'label' => 'Our Capabilities', 'url' => url('/our-capabilities'), 'active' => request()->is('our-capabilities')],
+        ['type' => 'link', 'label' => 'Global Presence', 'url' => url('/global-presence'), 'active' => request()->is('global-presence')],
+        ['type' => 'link', 'label' => 'Careers', 'url' => url('/careers'), 'active' => request()->is('careers')],
         ['type' => 'link', 'label' => 'Blog', 'url' => url('/blog'), 'active' => request()->is('blog*')],
         ['type' => 'link', 'label' => 'Contact Us', 'url' => url('/contact-us'), 'active' => request()->is('contact-us')],
     ];
 @endphp
 
-<header class="frontend-header {{ request()->is('/') || request()->is('about-us', 'team', 'research-and-development', 'our-core-principles', 'contact-us', 'categories', 'products', 'products/*', 'blog', 'blog/*', 'events', 'events/*', 'gallery', 'services', 'services/*') ? 'frontend-header--hero' : 'frontend-header--static' }}">
+<header class="frontend-header {{ request()->is($heroPages) ? 'frontend-header--hero' : 'frontend-header--static' }}">
     <div class="container">
         <div class="header-inner">
             <x-site-logo />

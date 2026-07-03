@@ -5,7 +5,7 @@
 @push('meta')
     <x-frontend.seo-meta
         title="Products"
-        description="Browse our pharmaceutical products and submit an enquiry for pricing and availability."
+        description="Browse our pharmaceutical product categories and explore related products."
         :url="url('/products')"
     />
 @endpush
@@ -15,14 +15,5 @@
 @endsection
 
 @section('content')
-    <x-frontend.products.listing
-        :products="$products"
-        :categories="$categories"
-        :sub-categories="$subCategories"
-        :enquiry-products="$enquiryProducts" />
+    @include('components.frontend.products.categories-grid', ['categories' => $categories])
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('assets/js/checkbox-multiselect.js') }}"></script>
-    <script src="{{ asset('assets/js/frontend/products.js') }}"></script>
-@endpush

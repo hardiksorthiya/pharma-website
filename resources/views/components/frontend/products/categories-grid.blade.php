@@ -1,23 +1,19 @@
-<section class="categories-section product-subcategories-section">
+<section class="categories-section product-categories-section">
     <div class="container">
         <div class="categories-intro mb-4">
-            <h2 class="categories-heading">Sub Categories</h2>
-            @if ($category->description)
-                <div class="categories-subheading categories-subheading--html">{!! $category->description !!}</div>
-            @else
-                <p class="categories-subheading">Choose a sub category to browse related products.</p>
-            @endif
+            <h2 class="categories-heading">Product Categories</h2>
+            <p class="categories-subheading">Choose a category to browse related sub categories and products.</p>
         </div>
 
         <div class="row">
-            @forelse ($subCategories as $subCategory)
+            @forelse ($categories as $category)
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="{{ route('frontend.products.sub-category', [$category, $subCategory]) }}"
+                    <a href="{{ route('frontend.products.category', $category) }}"
                         class="category-card-link">
                         <article class="category-card h-100">
                             <div class="category-card-image-wrap">
-                                @if ($subCategory->image)
-                                    <img src="{{ $subCategory->image_url }}" alt="{{ $subCategory->title }}" class="category-card-image">
+                                @if ($category->image)
+                                    <img src="{{ $category->image_url }}" alt="{{ $category->title }}" class="category-card-image">
                                 @else
                                     <div class="category-card-image category-card-image--placeholder" aria-hidden="true">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
@@ -28,18 +24,18 @@
                                 @endif
                             </div>
                             <div class="category-card-body">
-                                <h3 class="category-card-title">{{ $subCategory->title }}</h3>
-                                @if ($subCategory->description)
-                                    <p class="category-card-desc">{{ Str::limit(strip_tags($subCategory->description), 120) }}</p>
+                                <h3 class="category-card-title">{{ $category->title }}</h3>
+                                @if ($category->description)
+                                    <p class="category-card-desc">{{ Str::limit(strip_tags($category->description), 120) }}</p>
                                 @endif
-                                <span class="category-card-count">{{ $subCategory->products_count }} {{ Str::plural('Product', $subCategory->products_count) }}</span>
+                                <span class="category-card-count">{{ $category->products_count }} {{ Str::plural('Product', $category->products_count) }}</span>
                             </div>
                         </article>
                     </a>
                 </div>
             @empty
                 <div class="col-12">
-                    <div class="categories-empty">No sub categories available for this category yet.</div>
+                    <div class="categories-empty">No product categories available yet.</div>
                 </div>
             @endforelse
         </div>

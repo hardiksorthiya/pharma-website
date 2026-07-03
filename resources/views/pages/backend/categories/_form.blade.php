@@ -35,6 +35,7 @@
         id="description"
         name="description"
         rows="5">{{ old('description', $category?->description) }}</textarea>
+    <small class="form-text text-muted">Supports rich text formatting (bold, lists, links, etc.).</small>
     @error('description')
         <div class="invalid-feedback d-block">{{ $message }}</div>
     @enderror

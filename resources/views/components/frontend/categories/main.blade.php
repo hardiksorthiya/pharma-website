@@ -26,7 +26,7 @@
                                 <div class="category-card-body">
                                     <h3 class="category-card-title">{{ $category->title }}</h3>
                                     @if ($category->description)
-                                        <p class="category-card-desc">{{ Str::limit($category->description, 120) }}</p>
+                                        <p class="category-card-desc">{{ Str::limit(strip_tags($category->description), 120) }}</p>
                                     @endif
                                     <span class="category-card-count">{{ $category->products_count }} {{ Str::plural('Product', $category->products_count) }}</span>
                                 </div>

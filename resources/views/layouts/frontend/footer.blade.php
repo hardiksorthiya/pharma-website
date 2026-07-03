@@ -21,6 +21,7 @@
                 <ul class="footer-links">
                     <li><a href="{{ url('/about-us') }}">About Us</a></li>
                     <li><a href="{{ url('/research-and-development') }}">Research and Development</a></li>
+                    <li><a href="{{ url('/manufacturing-excellence') }}">Manufacturing Excellence</a></li>
                     <li><a href="{{ url('/gallery') }}">Gallery</a></li>
                     {{-- <li><a href="{{ url('/services') }}">Services</a></li> --}}
                     <li><a href="{{ url('/blog') }}">Blog</a></li>

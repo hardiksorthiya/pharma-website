@@ -28,6 +28,11 @@
     </div>
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css">
+@endpush
+
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.js"></script>
     <script src="{{ asset('assets/js/backend/category-form.js') }}"></script>
 @endpush

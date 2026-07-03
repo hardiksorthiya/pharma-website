@@ -14,7 +14,9 @@
             <div class="col-lg-8 mb-4 mb-lg-0">
                 <div class="categories-intro mb-4">
                     <h2 class="categories-heading">{{ $heading }}</h2>
-                    <p class="categories-subheading">{{ $subheading }}</p>
+                    @if ($subheading)
+                        <div class="categories-subheading categories-subheading--html">{!! $subheading !!}</div>
+                    @endif
                 </div>
 
                 @if ($showCategoryFilter && ($categories->isNotEmpty() || $products->isNotEmpty()))

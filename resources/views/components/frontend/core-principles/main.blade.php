@@ -1,24 +1,29 @@
 @php
     $principles = [
         [
-            'title' => 'Innovation and Research',
-            'text' => 'We are driven by a culture of continuous innovation and research. Our APIs and FDFs foster progress and address unmet medical needs through rigorous scientific exploration.',
-            'icon' => 'microscope',
-        ],
-        [
-            'title' => 'Global Impact',
-            'text' => 'Our commitment extends beyond borders. We strive to make a positive global impact by providing accessible and affordable API & FDF solutions to improve healthcare outcomes worldwide.',
-            'icon' => 'globe',
+            'title' => 'Integrity',
+            'text' => 'We conduct our business with honesty, transparency, and the highest ethical standards, building lasting relationships based on trust.',
+            'icon' => 'integrity',
         ],
         [
             'title' => 'Quality Excellence',
-            'text' => 'Rigorous protocols, validated methods, and regulatory compliance ensure every product and analysis meets the highest standards of accuracy and consistency.',
+            'text' => 'We are committed to delivering pharmaceutical products that consistently meet the highest international standards of quality, safety, and efficacy.',
             'icon' => 'quality',
         ],
         [
-            'title' => 'Integrity & Ethics',
-            'text' => 'We uphold transparency and ethical standards in every study, partnership, and result we deliver, building lasting trust with clients and communities.',
-            'icon' => 'integrity',
+            'title' => 'Innovation',
+            'text' => 'We embrace innovation and continuous improvement to provide advanced pharmaceutical solutions that address evolving global healthcare needs.',
+            'icon' => 'microscope',
+        ],
+        [
+            'title' => 'Customer Commitment',
+            'text' => 'Our customers are at the center of everything we do, and we strive to deliver exceptional service, reliable supply, and long-term value.',
+            'icon' => 'customer',
+        ],
+        [
+            'title' => 'Global Responsibility',
+            'text' => 'We are dedicated to improving healthcare accessibility by delivering safe, affordable, and high-quality pharmaceutical solutions to patients around the world.',
+            'icon' => 'globe',
         ],
     ];
 @endphp

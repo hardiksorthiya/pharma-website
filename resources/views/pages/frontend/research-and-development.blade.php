@@ -1,11 +1,12 @@
 @extends('layouts.frontend.app')
 
-@section('title', 'Research and Development')
+@section('title', 'Research & Development')
 
 @section('breadcrumb')
     <x-frontend.page-hero
-        title="Research and Development"
-        description="Advancing pharmaceutical science through innovation, rigorous testing, and applied research."
+        title="Research & Development"
+        description="Driving innovation through science and expertise to deliver high-quality pharmaceutical solutions worldwide."
+        :backgroundImage="asset('assets/images/research.webp')"
     />
 @endsection
 

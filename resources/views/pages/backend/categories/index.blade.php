@@ -49,7 +49,7 @@
                                 </td>
                                 <td class="font-weight-semibold">{{ $category->title }}</td>
                                 <td><code>{{ $category->slug }}</code></td>
-                                <td class="admin-table-desc">{{ Str::limit($category->description, 80) }}</td>
+                                <td class="admin-table-desc">{{ Str::limit(strip_tags($category->description), 80) }}</td>
                                 <td class="text-right text-nowrap">
                                     <a href="{{ route('product-categories.edit', $category) }}" class="btn btn-sm btn-auth-outline btn-outline-secondary mr-1">Edit</a>
                                     <form action="{{ route('product-categories.destroy', $category) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this category?');">

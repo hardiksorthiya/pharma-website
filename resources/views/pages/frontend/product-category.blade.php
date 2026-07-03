@@ -5,7 +5,6 @@
 @section('breadcrumb')
     <x-frontend.page-hero
         :title="$category->title"
-        :description="$category->description"
         :background-image="$category->image_url"
         :breadcrumbs="[
             ['label' => 'Home', 'url' => url('/')],
