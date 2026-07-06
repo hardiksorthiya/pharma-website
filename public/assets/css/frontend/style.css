@@ -4616,6 +4616,284 @@ body:has(.gp-map-section) .jvm-tooltip {
     }
 }
 
+/* Home — Global Presence section */
+.home-gp-section {
+    padding: 0 0 80px;
+    background: var(--text-sorath-light-color);
+}
+
+.home-gp-panel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    padding: 56px 48px;
+    background: linear-gradient(135deg, #0a3d48 0%, #0d5c6a 48%, #0a4a55 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px rgba(10, 37, 64, 0.18);
+}
+
+.home-gp-panel-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zm0-2l26-15V20L28 6 2 20v29l26 15z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 56px 100px;
+    pointer-events: none;
+}
+
+.home-gp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #5ee7df;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.home-gp-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5ee7df;
+    box-shadow: 0 0 0 4px rgba(94, 231, 223, 0.18);
+}
+
+.home-gp-title {
+    font-size: clamp(1.65rem, 2.4vw, 2.15rem);
+    font-weight: 700;
+    line-height: 1.35;
+    color: #fff;
+    margin-bottom: 20px;
+    max-width: 560px;
+}
+
+.home-gp-title-accent {
+    display: block;
+    margin-top: 8px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #5ee7df;
+}
+
+.home-gp-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 24px;
+    max-width: 580px;
+}
+
+.home-gp-text strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.home-gp-regions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.home-gp-region {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.home-gp-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    background: #fff;
+    color: #0a3d48;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-gp-cta:hover {
+    color: #0a3d48;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.home-gp-cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #0a3d48;
+    color: #fff;
+}
+
+.home-gp-visual {
+    position: relative;
+    min-height: 380px;
+}
+
+.home-gp-globe {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.home-gp-globe-svg {
+    width: min(100%, 320px);
+    height: auto;
+    opacity: 0.95;
+    animation: homeGpGlobeSpin 28s linear infinite;
+}
+
+@keyframes homeGpGlobeSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.home-gp-stat-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.home-gp-stat-card {
+    padding: 20px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    text-align: center;
+}
+
+.home-gp-stat-card--primary {
+    grid-column: span 2;
+    padding: 28px 20px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.home-gp-stat-value {
+    display: block;
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.home-gp-stat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(94, 231, 223, 0.14);
+    color: #5ee7df;
+    margin-bottom: 10px;
+}
+
+.home-gp-stat-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.home-gp-partners {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.home-gp-partners span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 5px 10px;
+    border-left: 2px solid rgba(94, 231, 223, 0.35);
+}
+
+.home-gp-partners span:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+@media (max-width: 991.98px) {
+    .home-gp-section {
+        padding-bottom: 60px;
+    }
+
+    .home-gp-panel {
+        padding: 40px 28px;
+    }
+
+    .home-gp-visual {
+        min-height: 320px;
+    }
+
+    .home-gp-stat-grid {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-gp-panel {
+        padding: 32px 22px;
+        border-radius: 18px;
+    }
+
+    .home-gp-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-gp-stat-card--primary {
+        grid-column: span 1;
+    }
+
+    .home-gp-partners span {
+        border-left: none;
+        padding-left: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+    }
+}
+
 .services-section--page {
     margin: 0;
     border-radius: 0;

@@ -29,17 +29,17 @@
             <div class="col-lg-6 about-content about-entrance about-entrance--content" data-about-entrance>
                 <span class="about-badge about-entrance-item">
                     <span class="about-badge-dot"></span>
-                    About Our Company
+                    About Us
                 </span>
 
                 <h2 class="about-title cursor-zoom about-entrance-item">
-                    Bridging science &amp; trusted
-                    <span class="about-title-gradient">pharmaceutical care</span>
+                    Bridging Science with Trusted
+                    <span class="about-title-gradient">Pharmaceutical Solutions</span>
                 </h2>
 
                 <p class="about-text about-entrance-item">
-                    We combine scientific research with quality manufacturing to deliver safe,
-                    effective medicines that improve lives worldwide.
+                    We combine scientific expertise with advanced manufacturing to deliver safe, effective,
+                    and affordable pharmaceutical products that improve lives worldwide.
                 </p>
 
                 <div class="row about-entrance-item">
@@ -52,7 +52,7 @@
                                 </svg>
                             </span>
                             <h3 class="about-feature-title cursor-zoom">Our Mission</h3>
-                            <p class="about-feature-text">To provide high-quality medicines with accuracy and care.</p>
+                            <p class="about-feature-text">To deliver safe, effective, and affordable pharmaceutical solutions where quality is never an option—it is our commitment to every patient, healthcare professional, and partner.</p>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -63,13 +63,13 @@
                                 </svg>
                             </span>
                             <h3 class="about-feature-title cursor-zoom">Our Vision</h3>
-                            <p class="about-feature-text">To be a trusted leader in global healthcare solutions.</p>
+                            <p class="about-feature-text">To become one of the world's most trusted pharmaceutical companies by setting new benchmarks in quality, innovation, and global healthcare accessibility.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="about-footer about-entrance-item">
-                    <a href="#" class="btn about-cta cursor-zoom">
+                    <a href="{{ url('/about-us') }}" class="btn about-cta cursor-zoom">
                         <span>More About Us</span>
                         <span class="services-cta-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
