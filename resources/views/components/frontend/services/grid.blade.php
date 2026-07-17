@@ -3,32 +3,34 @@
 @php
     $allServices = [
         [
-            'title' => 'Laboratory Testing',
-            'text' => 'Advanced laboratory testing services delivering precise, reliable results for research and healthcare needs.',
+            'title' => 'Contract Manufacturing & Private Label',
+            'text' => 'Comprehensive contract manufacturing and private label solutions, including product development, custom formulations, branding, packaging, and market-specific labeling. Complete CDMO solutions under one roof.',
         ],
         [
-            'title' => 'Biomedical Testing',
-            'text' => 'Specialized biomedical tests designed to provide accurate data for clinical and research applications.',
+            'title' => 'Regulatory & Dossier Support',
+            'text' => 'Comprehensive regulatory support, including CTD/ACTD dossier preparation, product registration, regulatory documentation, and compliance assistance for international markets.',
         ],
         [
-            'title' => 'Quality Control & Validation',
-            'text' => 'Comprehensive quality assurance and validation processes ensuring compliance and product integrity.',
+            'title' => 'API & Custom Sourcing',
+            'text' => 'Reliable sourcing of APIs, pharmaceutical intermediates, finished formulations, oncology medicines, and specialty healthcare products through trusted manufacturing partners.',
         ],
         [
-            'title' => 'Diagnostic Testing',
-            'text' => 'Accurate diagnostic testing solutions supporting early detection, monitoring, and clinical decision-making.',
+            'title' => 'Cold Chain Pharmaceutical Logistics',
+            'text' => 'Specialized storage, handling, and global distribution of temperature-sensitive pharmaceutical products through validated cold chain logistics, ensuring product integrity throughout the supply chain.',
         ],
         [
-            'title' => 'Industrial Testing',
-            'text' => 'Robust industrial testing programs to verify material quality, safety, and regulatory compliance.',
-        ],
-        [
-            'title' => 'Clinical Testing',
-            'text' => 'Clinical testing services aligned with pharmaceutical standards for trials, validation, and patient safety.',
+            'title' => 'Global Supply & Distribution',
+            'text' => 'End-to-end export management, documentation, and reliable global distribution to pharmaceutical distributors, hospitals, healthcare institutions, and government organizations worldwide.',
         ],
     ];
 
     $services = $limit ? array_slice($allServices, 0, (int) $limit) : $allServices;
+
+    $headerTitle = 'Complete Pharmaceutical Solutions';
+    $headerAccent = 'Under One Roof';
+    $headerIntro = 'We deliver integrated pharmaceutical solutions through trusted manufacturing partnerships, regulatory expertise, reliable sourcing, and efficient global supply chain management, supporting healthcare organizations worldwide.';
+    $ctaUrl = url('/our-capabilities');
+    $ctaLabel = 'Explore Our Capabilities';
 @endphp
 
 <section class="services-section services-section--{{ $variant }} {{ $variant === 'home' ? 'home-reveal home-parallax' : '' }}"
@@ -42,18 +44,17 @@
                         Our Services
                     </span>
                     <h2 class="services-title">
-                        Reliable testing, analysis &amp;
-                        <span class="services-title-accent cursor-zoom">research solutions</span>
+                        {{ $headerTitle }}
+                        <span class="services-title-accent cursor-zoom">{{ $headerAccent }}</span>
                     </h2>
                 </div>
                 <div class="col-lg-5">
                     <p class="services-intro">
-                        Our laboratory provides reliable testing, precise analysis, and research support
-                        backed by scientific expertise and modern technology.
+                        {{ $headerIntro }}
                     </p>
-                    @if ($limit)
-                        <a href="{{ url('/services') }}" class="services-cta cursor-zoom">
-                            <span>View All Services</span>
+                    @if ($variant === 'home')
+                        <a href="{{ $ctaUrl }}" class="services-cta cursor-zoom">
+                            <span>{{ $ctaLabel }}</span>
                             <span class="services-cta-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
@@ -78,7 +79,6 @@
 
                         <h3 class="service-card-title">{{ $service['title'] }}</h3>
                         <p class="service-card-text">{{ $service['text'] }}</p>
-                        
                     </div>
                 </div>
             @endforeach
