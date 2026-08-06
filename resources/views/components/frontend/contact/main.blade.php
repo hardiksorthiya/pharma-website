@@ -196,7 +196,7 @@
                 src="{{ $settings->map_src }}"
                 allowfullscreen
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerpolicy="strict-origin-when-cross-origin"
                 title="Our location on Google Maps">
             </iframe>
         </div>

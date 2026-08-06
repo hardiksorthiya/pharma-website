@@ -3,7 +3,7 @@
     $productsActive = request()->is('products*');
 
     $productDropdownChildren = collect([
-        ['label' => 'All Products', 'url' => url('/products'), 'active' => request()->is('products') && ! request()->is('products/category*'), 'image' => null],
+        ['label' => 'All Products', 'url' => url('/products'), 'active' => request()->is('products') && ! request()->is('products/category*'), 'image' => asset('assets/images/sans4.webp')],
     ])->merge(
         ($headerProductCategories ?? collect())->map(function ($category) {
             return [

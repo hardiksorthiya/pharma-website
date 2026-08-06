@@ -11,19 +11,21 @@
             <div class="col-md-6 col-lg-2 mb-5 mb-md-0">
                 <h3 class="footer-col-title">Quick Links</h3>
                 <ul class="footer-links">
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('/about-us') }}">About Us</a></li>
-                    <li><a href="{{ url('/research-and-development') }}">Research and Development</a></li>
-                    <li><a href="{{ url('/manufacturing-excellence') }}">Manufacturing Excellence</a></li>
-                    <li><a href="{{ url('/gallery') }}">Gallery</a></li>
-                    {{-- <li><a href="{{ url('/services') }}">Services</a></li> --}}
+                    <li><a href="{{ url('/oncology-solutions') }}">Oncology Solutions</a></li>
+                    <li><a href="{{ url('/our-capabilities') }}">Our Capabilities</a></li>
+                    <li><a href="{{ url('/global-presence') }}">Global Presence</a></li>
+                    <li><a href="{{ url('/careers') }}">Careers</a></li>
                     <li><a href="{{ url('/blog') }}">Blog</a></li>
-                    <li><a href="{{ url('/events') }}">Events</a></li>
+                    <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
                 </ul>
             </div>
 
             <div class="col-md-6 col-lg-2 mb-5 mb-md-0">
                 <h3 class="footer-col-title">Product Categories</h3>
                 <ul class="footer-links">
+                    <li><a href="{{ url('/products') }}">All Products</a></li>
                     @forelse ($footerProductCategories as $category)
                         <li>
                             <a href="{{ route('frontend.products.category', $category) }}">{{ $category->title }}</a>
