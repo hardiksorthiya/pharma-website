@@ -6,14 +6,6 @@
                 <p class="footer-about">
                     We support discovery across healthcare, biotechnology, and pharmaceutical sciences.
                 </p>
-                <div class="footer-hours">
-                    <p class="footer-hours-title">Working Hours:</p>
-                    <ul class="footer-hours-list">
-                        <li><span>Monday - Friday:</span><span>10:00 - 05:00</span></li>
-                        <li><span>Saturday:</span><span>10:00 - 04:00</span></li>
-                        <li><span>Sunday:</span><span>Closed</span></li>
-                    </ul>
-                </div>
             </div>
 
             <div class="col-md-6 col-lg-2 mb-5 mb-md-0">

@@ -8,7 +8,7 @@
                         alt="Pharmaceutical laboratory flask">
 
                     <img class="about-main-img"
-                        src="{{ asset('assets/images/research.webp') }}"
+                        src="{{ asset('assets/images/research2.webp') }}"
                         alt="Pharmaceutical research and quality control">
 
                     <div class="about-stat-card">
@@ -78,7 +78,7 @@
         <div class="row about-ethos-card g-0">
             <div class="col-lg-6">
                 <img class="about-ethos-img"
-                    src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=900&q=80"
+                    src="{{ asset('assets/images/sans5.webp') }}"
                     alt="WHO-GMP certified pharmaceutical manufacturing facility">
             </div>
             <div class="col-lg-6">

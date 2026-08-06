@@ -8,7 +8,7 @@
 
                     <div class="text-center mb-4">
                         <div class="brand-icon mb-3">S</div>
-                        <h4 class="font-weight-bold text-dark mb-1">{{ config('app.name', 'Sanskruti Pharma') }}</h4>
+                        <h4 class="font-weight-bold text-dark mb-1">{{ config('app.name', 'Sanskriti Pharma') }}</h4>
                         <p class="text-muted small mb-0">@yield('auth-subtitle')</p>
                     </div>
 

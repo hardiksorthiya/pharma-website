@@ -75,7 +75,7 @@
                     <span class="about-title-gradient">global healthcare markets</span>
                 </h2>
                 <p class="about-text about-text--wide">
-                    At Sanskruti Pharma, we are committed to expanding access to quality healthcare by delivering
+                    At Sanskriti Pharma, we are committed to expanding access to quality healthcare by delivering
                     high-quality pharmaceutical products, oncology medicines, APIs, hospital consumables, and medical
                     devices to healthcare providers across the world. Guided by our motto, “Care Beyond Borders,” we
                     combine international quality standards, regulatory expertise, and dependable supply to support
@@ -131,7 +131,7 @@
                 reliable global distribution.
             </p>
             <p class="gp-narrative-text mb-0">
-                Sanskruti Pharma has 100+ oncology and finished formulation products already registered or currently
+                Sanskriti Pharma has 100+ oncology and finished formulation products already registered or currently
                 undergoing registration across multiple international markets. Our strong regulatory capabilities and
                 market-specific expertise enable partners to accelerate product registration, expand into new markets,
                 and ensure continuous access to safe, effective, and affordable healthcare solutions.

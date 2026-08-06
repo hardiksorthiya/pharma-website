@@ -68,9 +68,9 @@ class Setting extends Model
     public static function current(): self
     {
         return static::query()->firstOrCreate([], [
-            'phone' => '+91 98765 43210',
-            'email' => 'info@sanskrutipharma.com',
-            'address' => "Sanskruti Pharma Pvt. Ltd.,\n123, Pharma City, Hyderabad,\nTelangana, India - 500085",
+            'phone' => '+91 81602 38360',
+            'email' => 'info@sanskritipharma.com',
+            'address' => "2nd Floor, \"GOKULAM COMPLEX\",\nPlot No. 100, 100/A, 101, 102, 103,\nVasudev Nagar, Ved Road,\nSurat – 395004, Gujarat, India",
             'map_embed_url' => config('app.google_map_url'),
         ]);
     }

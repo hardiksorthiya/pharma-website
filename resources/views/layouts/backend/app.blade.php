@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Sanskruti Pharma') }}</title>
+        <title>{{ config('app.name', 'Sanskriti Pharma') }}</title>
         @if (isset($settings) && $settings->favicon_url)
             <link rel="icon" href="{{ $settings->favicon_url }}">
         @endif

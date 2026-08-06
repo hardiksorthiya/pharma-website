@@ -1,12 +1,21 @@
 <section class="contact-section">
     <div class="container">
+        @if (session('contact_success'))
+            <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                {{ session('contact_success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-lg-8 mb-4 mb-lg-0">
                 <div class="contact-card">
                     <h2 class="contact-card-title">Send Us a Message</h2>
                     <span class="contact-card-line" aria-hidden="true"></span>
 
-                    <form class="contact-form" action="#" method="post">
+                    <form class="contact-form" action="{{ route('frontend.contact.store') }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-4">
@@ -17,7 +26,7 @@
                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                         </svg>
                                     </span>
-                                    <input type="text" class="contact-input" id="contactName" name="name" placeholder="Full Name" required>
+                                    <input type="text" class="contact-input @error('name') is-invalid @enderror" id="contactName" name="name" value="{{ old('name') }}" placeholder="Full Name" required>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
@@ -28,7 +37,7 @@
                                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
                                         </svg>
                                     </span>
-                                    <input type="email" class="contact-input" id="contactEmail" name="email" placeholder="Email Address" required>
+                                    <input type="email" class="contact-input @error('email') is-invalid @enderror" id="contactEmail" name="email" value="{{ old('email') }}" placeholder="Email Address" required>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
@@ -39,7 +48,7 @@
                                             <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/>
                                         </svg>
                                     </span>
-                                    <input type="tel" class="contact-input" id="contactPhone" name="phone" placeholder="Phone Number" required>
+                                    <input type="tel" class="contact-input @error('phone') is-invalid @enderror" id="contactPhone" name="phone" value="{{ old('phone') }}" placeholder="Phone Number" required>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
@@ -51,19 +60,19 @@
                                             <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Zm13 2v9.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1Z"/>
                                         </svg>
                                     </span>
-                                    <input type="text" class="contact-input" id="contactCompany" name="company" placeholder="Company Name">
+                                    <input type="text" class="contact-input @error('company') is-invalid @enderror" id="contactCompany" name="company" value="{{ old('company') }}" placeholder="Company Name">
                                 </div>
                             </div>
                             <div class="col-12 mb-4">
                                 <label class="contact-label" for="contactSubject">Subject <span class="contact-required">*</span></label>
                                 <div class="contact-field contact-field--select">
-                                    <select class="contact-input contact-select" id="contactSubject" name="subject" required>
-                                        <option value="" selected disabled>Select a subject</option>
-                                        <option value="general">General Inquiry</option>
-                                        <option value="products">Product Information</option>
-                                        <option value="partnership">Partnership &amp; Distribution</option>
-                                        <option value="support">Customer Support</option>
-                                        <option value="other">Other</option>
+                                    <select class="contact-input contact-select @error('subject') is-invalid @enderror" id="contactSubject" name="subject" required>
+                                        <option value="" disabled {{ old('subject') ? '' : 'selected' }}>Select a subject</option>
+                                        <option value="general" @selected(old('subject') === 'general')>General Inquiry</option>
+                                        <option value="products" @selected(old('subject') === 'products')>Product Information</option>
+                                        <option value="partnership" @selected(old('subject') === 'partnership')>Partnership &amp; Distribution</option>
+                                        <option value="support" @selected(old('subject') === 'support')>Customer Support</option>
+                                        <option value="other" @selected(old('subject') === 'other')>Other</option>
                                     </select>
                                     <span class="contact-select-chevron" aria-hidden="true">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
@@ -80,7 +89,7 @@
                                             <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.637c.393.389.83.775 1.306 1.148a9.02 9.02 0 0 0 1.544-1.16c.418.315.858.592 1.314.828l-1.379 1.14a1 1 0 0 1-1.328-.074l-1.06-1.06z"/>
                                         </svg>
                                     </span>
-                                    <textarea class="contact-input contact-textarea" id="contactMessage" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                                    <textarea class="contact-input contact-textarea @error('message') is-invalid @enderror" id="contactMessage" name="message" rows="5" placeholder="Write your message here..." required>{{ old('message') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +123,6 @@
                                 @if ($settings->phone)
                                     <p class="contact-info-text"><a href="{{ $settings->phone_tel }}">{{ $settings->phone }}</a></p>
                                 @endif
-                                <p class="contact-info-meta">Mon - Sat (9:00 AM - 6:00 PM)</p>
                             </div>
                         </li>
                         <li class="contact-info-item">
@@ -152,7 +160,7 @@
                             </span>
                             <div>
                                 <h3 class="contact-info-title">Global Inquiries</h3>
-                                <p class="contact-info-text"><a href="mailto:export@sanskrutipharma.com">export@sanskrutipharma.com</a></p>
+                                <p class="contact-info-text"><a href="mailto:export@Sanskritipharma.com">export@Sanskritipharma.com</a></p>
                                 <p class="contact-info-meta">For international business</p>
                             </div>
                         </li> --}}
@@ -165,8 +173,12 @@
                             </span>
                             <div>
                                 <h3 class="contact-info-title">Customer Support</h3>
-                                <p class="contact-info-text"><a href="tel:+919876543211">+91 98765 43211</a></p>
-                                <p class="contact-info-meta"><a href="mailto:support@sanskrutipharma.com">support@sanskrutipharma.com</a></p>
+                                @if ($settings->phone)
+                                    <p class="contact-info-text"><a href="{{ $settings->phone_tel }}">{{ $settings->phone }}</a></p>
+                                @endif
+                                @if ($settings->email)
+                                    <p class="contact-info-meta"><a href="{{ $settings->mailto }}">{{ $settings->email }}</a></p>
+                                @endif
                             </div>
                         </li>
                     </ul>

@@ -1,5 +1,5 @@
 @php
-    $companyActive = request()->is('about-us*', 'team*', 'research-and-development*', 'manufacturing-excellence*', 'our-core-principles*');
+    $companyActive = request()->is('about-us*', 'research-and-development*', 'manufacturing-excellence*', 'our-core-principles*');
     $productsActive = request()->is('products*');
 
     $productDropdownChildren = collect([
@@ -17,7 +17,7 @@
 
     $heroPages = [
         '/',
-        'about-us', 'team', 'our-core-principles',
+        'about-us', 'our-core-principles',
         'research-and-development', 'manufacturing-excellence',
         'our-capabilities', 'oncology-solutions', 'global-presence', 'careers',
         'contact-us', 'categories', 'products', 'products/*',
@@ -32,7 +32,6 @@
             'active' => $companyActive,
             'children' => [
                 ['label' => 'About Us', 'url' => url('/about-us'), 'active' => request()->is('about-us'), 'image' => null],
-                ['label' => 'Our Team', 'url' => url('/team'), 'active' => request()->is('team'), 'image' => null],
                 ['label' => 'Research & Development', 'url' => url('/research-and-development'), 'active' => request()->is('research-and-development'), 'image' => null],
                 ['label' => 'Manufacturing Excellence', 'url' => url('/manufacturing-excellence'), 'active' => request()->is('manufacturing-excellence'), 'image' => null],
                 ['label' => 'Our Core Values', 'url' => url('/our-core-principles'), 'active' => request()->is('our-core-principles'), 'image' => null],

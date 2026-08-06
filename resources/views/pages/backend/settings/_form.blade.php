@@ -56,7 +56,7 @@
                     id="phone"
                     name="phone"
                     value="{{ old('phone', $settings?->phone) }}"
-                    placeholder="+91 98765 43210">
+                    placeholder="+91 81602 38360">
                 @error('phone')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
@@ -69,7 +69,7 @@
                     id="email"
                     name="email"
                     value="{{ old('email', $settings?->email) }}"
-                    placeholder="info@sanskrutipharma.com">
+                    placeholder="info@sanskritipharma.com">
                 @error('email')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror

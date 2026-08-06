@@ -11,7 +11,7 @@
             'badge' => '2 Facilities',
             'title' => 'Finished Formulation Manufacturing',
             'text' => 'Our advanced formulation facilities manufacture a comprehensive range of pharmaceutical dosage forms. Every product is manufactured under stringent quality systems using advanced production technologies to ensure superior quality, safety, efficacy, and regulatory compliance.',
-            'image' => 'https://images.unsplash.com/photo-1581093458791-9d15482442c6?auto=format&fit=crop&w=900&q=80',
+            'image' => asset('assets/images/sans7.webp'),
             'capabilities_label' => 'Dosage Forms Manufactured',
             'capabilities' => [
                 'Tablets', 'Capsules', 'Sterile Injectables', 'Lyophilized Injections',
@@ -27,7 +27,7 @@
             'badge' => 'High-Containment',
             'title' => 'Cytotoxic (Oncology) Manufacturing',
             'text' => 'Our dedicated high-containment oncology manufacturing facility is specifically designed for the production of high-potency cytotoxic medicines with advanced containment technologies, controlled environments, and stringent safety protocols.',
-            'image' => 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=900&q=80',
+            'image' => asset('assets/images/sans8.webp'),
             'capabilities_label' => 'Manufacturing Capabilities',
             'capabilities' => [
                 'Oncology Tablets', 'Oncology Capsules', 'Sterile Oncology Injectables',
@@ -42,7 +42,7 @@
             'badge' => 'CDMO Partner',
             'title' => 'API, Intermediates & CDMO Manufacturing',
             'text' => 'Our API manufacturing facility specializes in the development and commercial production of Active Pharmaceutical Ingredients (APIs), Advanced Pharmaceutical Intermediates, and Specialty Chemicals. As a trusted CDMO and Custom Synthesis Partner, we provide end-to-end manufacturing and development support.',
-            'image' => 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=900&q=80',
+            'image' => asset('assets/images/sans9.webp'),
             'capabilities_label' => 'Services & Capabilities',
             'therapeutic_areas' => [
                 'Oncology', 'Anti-Infectives', 'Cardiovascular', 'Anti-Diabetic',
@@ -65,7 +65,7 @@
             'badge' => 'CDSCO Compliant',
             'title' => 'Class C & D Medical Device Manufacturing',
             'text' => 'Our CDSCO-compliant facility is dedicated to manufacturing high-risk medical devices in accordance with India\'s Medical Devices Rules and internationally recognized quality standards. Equipped with advanced technologies, controlled environments, and robust quality management systems.',
-            'image' => 'https://images.unsplash.com/photo-1579684385127-1ef15f5a9519?auto=format&fit=crop&w=900&q=80',
+            'image' => asset('assets/images/sans10.webp'),
             'capabilities_label' => 'Manufacturing Capabilities',
             'capabilities' => [
                 'Class C & D Medical Devices', 'Orthopedic Implants', 'Bone Cement',
@@ -103,7 +103,7 @@
         <div class="row mfg-intro-grid">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="mfg-intro-visual">
-                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=900&q=80"
+                    <img src="{{ asset('assets/images/sans6.webp') }}"
                         alt="Pharmaceutical manufacturing facility">
                     <div class="mfg-intro-visual-badge">
                         <span class="mfg-intro-visual-badge-value">WHO-GMP</span>

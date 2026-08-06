@@ -2,7 +2,7 @@
     $faqs = [
         [
             'question' => 'How can I request a quote for laboratory testing?',
-            'answer' => 'Fill out the contact form on this page or email us at info@sanskrutipharma.com with your project details. Our team will review your requirements and respond with a tailored quote within 24–48 business hours.',
+            'answer' => 'Fill out the contact form on this page or email us at '.($settings->email ?? 'info@sanskritipharma.com').' with your project details. Our team will review your requirements and respond with a tailored quote within 24–48 business hours.',
         ],
         [
             'question' => 'What certifications does your laboratory hold?',
@@ -18,7 +18,7 @@
         ],
         [
             'question' => 'How do I schedule a consultation with your team?',
-            'answer' => 'Use the contact form and select your subject, or call us during business hours. A specialist will arrange a consultation to discuss your research or testing needs.',
+            'answer' => 'Use the contact form and select your subject, or call us directly. A specialist will arrange a consultation to discuss your research or testing needs.',
         ],
         [
             'question' => 'What payment methods do you accept?',
@@ -40,7 +40,7 @@
             </h2>
             <p class="contact-faq-intro">
                 Quick answers to common questions about our services, testing process,
-                and how to get started with {{ config('app.name', 'Sanskruti Pharma') }}.
+                and how to get started with {{ config('app.name', 'Sanskriti Pharma') }}.
             </p>
         </div>
 

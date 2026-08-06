@@ -3,22 +3,27 @@
 @php
     $allServices = [
         [
+            'icon' => 'contract-manufacturing',
             'title' => 'Contract Manufacturing & Private Label',
             'text' => 'Comprehensive contract manufacturing and private label solutions, including product development, custom formulations, branding, packaging, and market-specific labeling. Complete CDMO solutions under one roof.',
         ],
         [
+            'icon' => 'regulatory-dossier',
             'title' => 'Regulatory & Dossier Support',
             'text' => 'Comprehensive regulatory support, including CTD/ACTD dossier preparation, product registration, regulatory documentation, and compliance assistance for international markets.',
         ],
         [
+            'icon' => 'api-sourcing',
             'title' => 'API & Custom Sourcing',
             'text' => 'Reliable sourcing of APIs, pharmaceutical intermediates, finished formulations, oncology medicines, and specialty healthcare products through trusted manufacturing partners.',
         ],
         [
+            'icon' => 'cold-chain',
             'title' => 'Cold Chain Pharmaceutical Logistics',
             'text' => 'Specialized storage, handling, and global distribution of temperature-sensitive pharmaceutical products through validated cold chain logistics, ensuring product integrity throughout the supply chain.',
         ],
         [
+            'icon' => 'global-supply',
             'title' => 'Global Supply & Distribution',
             'text' => 'End-to-end export management, documentation, and reliable global distribution to pharmaceutical distributors, hospitals, healthcare institutions, and government organizations worldwide.',
         ],
@@ -71,9 +76,7 @@
                 <div class="col-md-6 col-lg-4 mb-4 {{ $variant === 'home' ? 'home-reveal-item' : '' }}">
                     <div class="service-card h-100">
                         <span class="service-card-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
-                            </svg>
+                            @include('components.frontend.services.icons.' . $service['icon'])
                         </span>
                         <span class="service-card-num">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
 

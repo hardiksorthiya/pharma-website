@@ -28,11 +28,11 @@
     <div class="sidebar-logo">
         @if ($settings->logo_url)
             <a href="{{ route('dashboard') }}" class="sidebar-logo-link">
-                <img src="{{ $settings->logo_url }}" alt="{{ config('app.name', 'Sanskruti Pharma') }}" class="sidebar-logo-img">
+                <img src="{{ $settings->logo_url }}" alt="{{ config('app.name', 'Sanskriti Pharma') }}" class="sidebar-logo-img">
             </a>
         @else
             <div class="sidebar-logo-icon">S</div>
-            <span class="sidebar-logo-text">{{ config('app.name', 'Sanskruti Pharma') }}</span>
+            <span class="sidebar-logo-text">{{ config('app.name', 'Sanskriti Pharma') }}</span>
         @endif
     </div>
 
@@ -134,6 +134,26 @@
                 </svg>
             </span>
             <span class="sidebar-text">Galleries</span>
+        </a>
+
+        <a href="{{ route('resume-applications.index') }}"
+            class="sidebar-link {{ request()->routeIs('resume-applications.*') ? 'active' : '' }}">
+            <span class="sidebar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                </svg>
+            </span>
+            <span class="sidebar-text">Resume Applications</span>
+        </a>
+
+        <a href="{{ route('contact-messages.index') }}"
+            class="sidebar-link {{ request()->routeIs('contact-messages.*') ? 'active' : '' }}">
+            <span class="sidebar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7.5 4.925 7.5-4.925V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 3.088L15 8.75l-4.708 3.088L5.5 8.75l4.708-3.088L5.5 2.675 8.957 5.75 15 2.675v2.383z"/>
+                </svg>
+            </span>
+            <span class="sidebar-text">Contact Messages</span>
         </a>
 
         <a href="{{ route('settings.edit') }}"

@@ -16,7 +16,7 @@
                     </h2>
 
                     <p class="home-gp-text">
-                        From India to the world, Sanskruti Pharma partners with distributors, hospitals,
+                        From India to the world, Sanskriti Pharma partners with distributors, hospitals,
                         healthcare institutions, and government organizations across
                         <strong>35+ countries</strong> spanning Asia, Africa, Europe, Latin America,
                         the Middle East, and the CIS region. We deliver high-quality pharmaceutical and

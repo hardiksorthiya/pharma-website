@@ -151,7 +151,7 @@
                 <span class="about-title-gradient">under one roof</span>
             </h2>
             <p class="cap-intro-lead">
-                At Sanskruti Pharma, we are more than a pharmaceutical exporter—we are your strategic partner for
+                At Sanskriti Pharma, we are more than a pharmaceutical exporter—we are your strategic partner for
                 developing, manufacturing, registering, and delivering high-quality healthcare products to global markets.
             </p>
             <p class="cap-intro-text mb-0">
@@ -219,7 +219,7 @@
                     <h2 class="cap-partner-title">One-Stop Pharmaceutical Partner</h2>
                     <p class="cap-partner-text mb-0">
                         Whether you need API manufacturing, finished formulations, medical devices, regulatory support,
-                        market-specific packaging, private labeling, or global distribution, Sanskruti Pharma delivers
+                        market-specific packaging, private labeling, or global distribution, Sanskriti Pharma delivers
                         everything under one trusted partner. We simplify pharmaceutical sourcing so you can focus on
                         growing your business while we manage the complexity behind the scenes.
                     </p>
@@ -243,7 +243,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 mb-5 mb-lg-0">
-                <h2 class="cap-why-title">Why Global Partners Choose Sanskruti Pharma</h2>
+                <h2 class="cap-why-title">Why Global Partners Choose Sanskriti Pharma</h2>
                 <p class="cap-why-desc">
                     Integrated capabilities, regulatory expertise, and dependable global supply — everything you need
                     to succeed in international pharmaceutical markets.

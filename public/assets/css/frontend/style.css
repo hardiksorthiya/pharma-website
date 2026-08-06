@@ -3113,7 +3113,8 @@ body:has(.gp-map-section) .jvm-tooltip {
     .float-action--whatsapp,
     .float-action--whatsapp::before,
     .float-action--whatsapp::after,
-    .float-action--whatsapp svg {
+    .float-action--whatsapp svg,
+    .feature-microscope {
         animation: none;
     }
 
@@ -3399,11 +3400,8 @@ body:has(.gp-map-section) .jvm-tooltip {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #1a8cff 0%, #12b8c0 100%);
-    color: var(--text-sorath-light-color);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: contain;
+    display: block;
     margin-bottom: 16px;
 }
 
@@ -4424,8 +4422,8 @@ body:has(.gp-map-section) .jvm-tooltip {
 }
 
 .numbers-icon {
-    width: 56px;
-    height: 56px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     background: linear-gradient(180deg, #1a8cff 0%, var(--primary-sorath-color) 100%);
     color: var(--text-sorath-light-color);
@@ -4433,6 +4431,12 @@ body:has(.gp-map-section) .jvm-tooltip {
     align-items: center;
     justify-content: center;
     margin-bottom: 24px;
+}
+
+.numbers-icon svg {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
 }
 
 .numbers-value {
@@ -5259,16 +5263,8 @@ body:has(.gp-map-section) .jvm-tooltip {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
-
-.feature-video-btn:hover {
-    transform: translate(-50%, -50%) scale(1.05);
+    pointer-events: none;
 }
 
 .feature-video-ring {
@@ -5417,6 +5413,18 @@ body:has(.gp-map-section) .jvm-tooltip {
     object-fit: contain;
     opacity: 0.9;
     pointer-events: none;
+    transform-origin: center center;
+    animation: featureMicroscopeFloat 4s ease-in-out infinite;
+}
+
+@keyframes featureMicroscopeFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(5deg);
+    }
 }
 
 .feature-list {
@@ -6776,40 +6784,6 @@ body:has(.gp-map-section) .jvm-tooltip {
     max-width: 320px;
 }
 
-.footer-hours {
-    padding: 20px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    max-width: 320px;
-}
-
-.footer-hours-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-sorath-light-color);
-    margin-bottom: 12px;
-}
-
-.footer-hours-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-hours-list li {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 8px;
-}
-
-.footer-hours-list li:last-child {
-    margin-bottom: 0;
-}
-
 .footer-col-title {
     font-size: 1rem;
     font-weight: 700;
@@ -7898,6 +7872,24 @@ body:has(.gp-map-section) .jvm-tooltip {
     color: #0a2540;
     font-weight: 600;
     cursor: default;
+}
+
+.resume-file-input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 42px;
+    cursor: pointer;
+}
+
+.contact-field--file .contact-field-icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.resume-file-hint {
+    margin: 8px 0 0;
+    font-size: 0.82rem;
+    color: #64748b;
 }
 
 @media (max-width: 991.98px) {
