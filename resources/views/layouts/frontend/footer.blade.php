@@ -64,12 +64,6 @@
                 <p class="footer-company-name">SANSKRITI PHARMA GLOBAL LLP</p>
                 <p class="footer-company-id">LIP NUMBER: ACZ-8343</p>
             </div>
-            <div class="footer-bottom-right">
-                <p class="footer-credit">
-                    Developed by
-                    <a href="https://sorathwebsolution.com" target="_blank" rel="noopener noreferrer">Find Me Out Branding Solution</a>
-                </p>
-            </div>
         </div>
     </div>
 </footer>

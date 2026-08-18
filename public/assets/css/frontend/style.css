@@ -6987,10 +6987,12 @@ body:has(.gp-map-section) .jvm-tooltip {
 }
 
 .footer-bottom-left {
+    grid-column: 1;
     text-align: left;
 }
 
 .footer-bottom-center {
+    grid-column: 2;
     text-align: center;
 }
 
@@ -7103,8 +7105,8 @@ body:has(.gp-map-section) .jvm-tooltip {
     }
 
     .footer-bottom-left,
-    .footer-bottom-center,
-    .footer-bottom-right {
+    .footer-bottom-center {
+        grid-column: auto;
         text-align: center;
     }
 }
