@@ -45,10 +45,3 @@
         </button>
     </form>
 @endsection
-
-@section('auth-footer')
-    @if (Route::has('register'))
-        Don't have an account?
-        <a href="{{ route('register') }}">Create one</a>
-    @endif
-@endsection
