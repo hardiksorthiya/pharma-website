@@ -4,7 +4,7 @@
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <x-site-logo class="footer-logo" icon-class="footer-logo-icon" text-class="footer-logo-text" />
                 <p class="footer-about">
-                    We support discovery across healthcare, biotechnology, and pharmaceutical sciences.
+                    Delivering trusted pharmaceutical and healthcare products to global markets
                 </p>
             </div>
 
@@ -39,7 +39,7 @@
             <div class="col-md-12 col-lg-4">
                 <h3 class="footer-col-title">Follow Us On Social</h3>
                 <p class="footer-social-text">
-                    Connect with us online for updates, breakthroughs, and lab highlights.
+                    Stay connected for our latest products, company updates, and global healthcare insights
                 </p>
                 <div class="footer-social">
                     <a href="#" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
