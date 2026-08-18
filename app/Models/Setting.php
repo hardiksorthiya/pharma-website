@@ -8,6 +8,7 @@ class Setting extends Model
 {
     protected $fillable = [
         'logo',
+        'sticky_logo',
         'favicon',
         'phone',
         'email',
@@ -18,6 +19,11 @@ class Setting extends Model
     public function getLogoUrlAttribute(): ?string
     {
         return $this->logo ? asset('storage/'.$this->logo) : null;
+    }
+
+    public function getStickyLogoUrlAttribute(): ?string
+    {
+        return $this->sticky_logo ? asset('storage/'.$this->sticky_logo) : null;
     }
 
     public function getFaviconUrlAttribute(): ?string

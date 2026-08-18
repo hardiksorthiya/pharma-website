@@ -15,7 +15,7 @@
                     <h2 class="contact-card-title">Send Us a Message</h2>
                     <span class="contact-card-line" aria-hidden="true"></span>
 
-                    <form class="contact-form" action="{{ route('frontend.contact.store') }}" method="post">
+                    <form id="contactForm" class="contact-form" action="{{ route('frontend.contact.store') }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-4">

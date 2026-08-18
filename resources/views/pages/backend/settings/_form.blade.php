@@ -25,6 +25,24 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="sticky_logo">Sticky Header Logo</label>
+                @if ($settings?->sticky_logo)
+                    <div class="admin-image-preview mb-3 admin-image-preview--logo">
+                        <img src="{{ $settings->sticky_logo_url }}" alt="Current sticky header logo">
+                    </div>
+                @endif
+                <input type="file"
+                    class="form-control-file admin-file-input @error('sticky_logo') is-invalid @enderror"
+                    id="sticky_logo"
+                    name="sticky_logo"
+                    accept="image/jpeg,image/jpg,image/png,image/webp,image/svg+xml">
+                <small class="form-text text-muted">Shown on the white sticky header when scrolling up. If empty, the main logo is used.</small>
+                @error('sticky_logo')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
             <div class="form-group mb-0">
                 <label for="favicon">Favicon</label>
                 @if ($settings?->favicon)

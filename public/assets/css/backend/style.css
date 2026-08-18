@@ -1,14 +1,21 @@
 @import '../../fonts/css2.css';
 
 :root {
-    --primary-sorath-color: #0d6e6e;
-    --secondary-sorath-color: #0a5858;
-    --background-sorath-color: #f0f7f4;
-    --text-sorath-dark-color: #1b1b18;
+    --primary-sorath-color: #0084A3;
+    --secondary-sorath-color: #006880;
+    --brand-dark-color: #1A1A1B;
+    --brand-dark-teal: #004d5f;
+    --accent-sorath-color: #82B3A6;
+    --accent-sorath-light: #93C6BC;
+    --background-sorath-color: #f2f8f7;
+    --text-sorath-dark-color: #1A1A1B;
     --text-sorath-light-color: #fff;
     --border-sorath-color: #19140035;
     --border-sorath-color-hover: #1915014a;
     --font-sorath-family: 'Google Sans', sans-serif;
+    --gradient-sorath: linear-gradient(90deg, var(--brand-dark-teal) 0%, var(--primary-sorath-color) 100%);
+    --gradient-sorath-diagonal: linear-gradient(135deg, var(--brand-dark-color) 0%, var(--primary-sorath-color) 100%);
+    --gradient-sorath-deep: linear-gradient(135deg, var(--brand-dark-color) 0%, var(--brand-dark-teal) 55%, var(--primary-sorath-color) 100%);
 }
 
 html,
@@ -21,7 +28,7 @@ textarea {
 }
 
 .auth-page {
-    background: linear-gradient(135deg, #e8f4f8 0%, #f0f7f4 100%);
+    background: linear-gradient(135deg, #e8f4f2 0%, var(--background-sorath-color) 100%);
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -32,7 +39,7 @@ textarea {
 .auth-card {
     border: none;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 80, 120, 0.12);
+    box-shadow: 0 8px 30px rgba(0, 132, 163, 0.12);
 }
 
 .brand-icon {
@@ -386,7 +393,7 @@ textarea {
 .admin-card {
     border: none;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 80, 120, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 132, 163, 0.08);
 }
 
 .admin-card-danger {
@@ -591,7 +598,7 @@ textarea {
     background: #fff;
     border: 1px solid #e8eef3;
     border-radius: 12px;
-    box-shadow: 0 10px 24px rgba(0, 80, 120, 0.12);
+    box-shadow: 0 10px 24px rgba(0, 132, 163, 0.12);
     padding: 0.5rem;
 }
 

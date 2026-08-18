@@ -35,6 +35,7 @@
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/main.js') }}"></script>
+    <script src="{{ asset('assets/js/frontend/sticky-header.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/numbers-counter.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/cursor.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/scroll-top.js') }}"></script>

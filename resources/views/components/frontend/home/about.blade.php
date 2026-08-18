@@ -3,8 +3,8 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <div class="about-images about-entrance about-entrance--media" data-about-entrance>
-                    <img class="about-flask about-entrance-float" src="{{ asset('assets/images/flask.webp') }}"
-                        alt="Laboratory flask">
+                    {{-- <img class="about-flask about-entrance-float" src="{{ asset('assets/images/flask.webp') }}"
+                        alt="Laboratory flask"> --}}
 
                     <img class="about-main-img about-entrance-main" src="{{ asset('assets/images/research.webp') }}"
                         alt="Scientist in laboratory">
@@ -36,7 +36,7 @@
                 </h2>
 
                 <p class="about-text about-entrance-item">
-                    Established in 2007, Sanskriti Pharma is a trusted pharmaceutical company in India headquartered in Gujarat, the country's leading pharmaceutical manufacturing hub. We specialize in the global supply of pharmaceutical products, oncology medicines, APIs, specialty pharmaceuticals, contrast media, and medical devices, manufactured at WHO-GMP, EU-GMP, and CDSCO-compliant facilities to meet the highest international quality standards.
+                    Established in 2007, Sanskriti Pharma is a trusted pharmaceutical company in India headquartered in SURAT, Gujarat, the country's leading pharmaceutical manufacturing hub. We specialize in the global supply of pharmaceutical products, oncology medicines, APIs, specialty pharmaceuticals, contrast media, and medical devices, manufactured at WHO-GMP, EU-GMP, and CDSCO-compliant facilities to meet the highest international quality standards.
                 </p>
 
                 <p class="about-text about-entrance-item">

@@ -9,6 +9,6 @@
     @include('components.frontend.home.service')
     @include('components.frontend.home.global-presence')
     @include('components.frontend.home.feature')
-    @include('components.frontend.home.testimonial')
+    {{-- @include('components.frontend.home.testimonial') --}}
     @include('components.frontend.home.blog')
 @endsection

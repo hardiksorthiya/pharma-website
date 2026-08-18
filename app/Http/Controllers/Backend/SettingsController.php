@@ -26,6 +26,7 @@ class SettingsController extends Controller
             'address' => ['nullable', 'string'],
             'map_embed_url' => ['nullable', 'string'],
             'logo' => ['nullable', 'file', 'mimes:jpeg,jpg,png,webp,svg', 'max:2048'],
+            'sticky_logo' => ['nullable', 'file', 'mimes:jpeg,jpg,png,webp,svg', 'max:2048'],
             'favicon' => ['nullable', 'file', 'mimes:jpeg,jpg,png,webp,ico,svg', 'max:1024'],
         ]);
 
@@ -44,6 +45,14 @@ class SettingsController extends Controller
             }
 
             $data['logo'] = $request->file('logo')->store('settings', 'public');
+        }
+
+        if ($request->hasFile('sticky_logo')) {
+            if ($settings->sticky_logo) {
+                Storage::disk('public')->delete($settings->sticky_logo);
+            }
+
+            $data['sticky_logo'] = $request->file('sticky_logo')->store('settings', 'public');
         }
 
         if ($request->hasFile('favicon')) {

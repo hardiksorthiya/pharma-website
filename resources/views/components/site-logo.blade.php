@@ -1,7 +1,22 @@
-@props(['class' => 'header-logo', 'iconClass' => 'header-logo-icon', 'textClass' => 'header-logo-text', 'iconSize' => 22])
+@props([
+    'class' => 'header-logo',
+    'iconClass' => 'header-logo-icon',
+    'textClass' => 'header-logo-text',
+    'iconSize' => 26,
+    'useStickyVariant' => false,
+])
 
 <a href="{{ url('/') }}" class="{{ $class }}">
-    @if ($settings->logo_url)
+    @if ($useStickyVariant && $settings->logo_url && $settings->sticky_logo_url)
+        <img
+            src="{{ $settings->logo_url }}"
+            alt="{{ config('app.name', 'Sanskriti Pharma') }}"
+            class="{{ $class }}-img {{ $class }}-img--default">
+        <img
+            src="{{ $settings->sticky_logo_url }}"
+            alt="{{ config('app.name', 'Sanskriti Pharma') }}"
+            class="{{ $class }}-img {{ $class }}-img--sticky">
+    @elseif ($settings->logo_url)
         <img src="{{ $settings->logo_url }}" alt="{{ config('app.name', 'Sanskriti Pharma') }}" class="{{ $class }}-img">
     @else
         <span class="{{ $iconClass }}">

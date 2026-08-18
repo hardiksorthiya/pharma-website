@@ -7,8 +7,8 @@
             </h2>
         </div>
 
-        <div class="row">
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
+        <div class="row numbers-grid">
+            <div class="col-md-3 col-sm-6 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
+            <div class="col-md-3 col-sm-6 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -88,7 +88,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
+            <div class="col-md-3 col-sm-6 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 mb-5 mb-md-0 home-reveal-item">
+            <div class="col-md-3 col-sm-6 home-reveal-item">
                 <div class="numbers-item">
                     <span class="numbers-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">

@@ -160,7 +160,7 @@
                 strokeWidth: 0.6,
             },
             hover: {
-                fill: '#12b8c0',
+                fill: '#0084A3',
                 cursor: 'pointer',
             },
         },
@@ -168,8 +168,8 @@
             regions: [{
                 attribute: 'fill',
                 scale: {
-                    1: '#1a8cff',
-                    2: '#12b8c0',
+                    1: '#004d5f',
+                    2: '#0084A3',
                 },
                 values: buildSeriesValues(null),
             }],

@@ -3,9 +3,9 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <div class="about-images">
-                    <img class="about-flask"
+                    {{-- <img class="about-flask"
                         src="{{ asset('assets/images/flask.webp') }}"
-                        alt="Pharmaceutical laboratory flask">
+                        alt="Pharmaceutical laboratory flask"> --}}
 
                     <img class="about-main-img"
                         src="{{ asset('assets/images/research2.webp') }}"

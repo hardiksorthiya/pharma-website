@@ -8,7 +8,7 @@
 <div class="hero-slide">
     <section class="hero-section {{ $hasVideo ? 'hero-section--video' : '' }}"
         @if (!$hasVideo && $hasImage)
-            style="background-image: linear-gradient(105deg, rgba(6, 28, 40, 0.92) 0%, rgba(6, 28, 40, 0.55) 45%, rgba(6, 28, 40, 0.35) 100%), url('{{ $slide['background_image'] }}');"
+            style="background-image: url('{{ $slide['background_image'] }}');"
         @endif>
 
         @if ($hasVideo)
@@ -16,6 +16,9 @@
                 @if ($hasImage) poster="{{ $slide['background_image'] }}" @endif>
                 <source src="{{ $slide['background_video'] }}" type="video/mp4">
             </video>
+        @endif
+
+        @if ($hasVideo || $hasImage)
             <div class="hero-overlay"></div>
         @endif
 

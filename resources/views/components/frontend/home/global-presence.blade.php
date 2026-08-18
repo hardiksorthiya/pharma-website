@@ -49,17 +49,17 @@
                         <div class="home-gp-globe" aria-hidden="true">
                             <svg class="home-gp-globe-svg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="180" cy="180" r="148" fill="none" stroke="rgba(94,231,223,0.18)" stroke-width="1.5"/>
-                                <ellipse cx="180" cy="180" rx="148" ry="52" fill="none" stroke="rgba(94,231,223,0.12)" stroke-width="1"/>
-                                <ellipse cx="180" cy="180" rx="52" ry="148" fill="none" stroke="rgba(94,231,223,0.12)" stroke-width="1"/>
-                                <path d="M32 180h296M180 32v296" stroke="rgba(94,231,223,0.1)" stroke-width="1"/>
-                                <circle cx="118" cy="142" r="5" fill="#5ee7df"/>
-                                <circle cx="205" cy="118" r="4" fill="#1a8cff"/>
-                                <circle cx="248" cy="168" r="4.5" fill="#5ee7df"/>
-                                <circle cx="132" cy="208" r="4" fill="#1a8cff"/>
-                                <circle cx="188" cy="228" r="5" fill="#5ee7df"/>
-                                <circle cx="92" cy="176" r="3.5" fill="#1a8cff"/>
-                                <circle cx="222" cy="196" r="3.5" fill="#5ee7df"/>
-                                <circle cx="160" cy="108" r="3" fill="#1a8cff"/>
+                                <ellipse cx="180" cy="180" rx="148" ry="52" fill="none" stroke="rgba(147,198,188,0.12)" stroke-width="1"/>
+                                <ellipse cx="180" cy="180" rx="52" ry="148" fill="none" stroke="rgba(147,198,188,0.12)" stroke-width="1"/>
+                                <path d="M32 180h296M180 32v296" stroke="rgba(147,198,188,0.1)" stroke-width="1"/>
+                                <circle cx="118" cy="142" r="5" fill="#0084A3"/>
+                                <circle cx="205" cy="118" r="4" fill="#004d5f"/>
+                                <circle cx="248" cy="168" r="4.5" fill="#0084A3"/>
+                                <circle cx="132" cy="208" r="4" fill="#004d5f"/>
+                                <circle cx="188" cy="228" r="5" fill="#0084A3"/>
+                                <circle cx="92" cy="176" r="3.5" fill="#004d5f"/>
+                                <circle cx="222" cy="196" r="3.5" fill="#0084A3"/>
+                                <circle cx="160" cy="108" r="3" fill="#004d5f"/>
                             </svg>
                         </div>
 

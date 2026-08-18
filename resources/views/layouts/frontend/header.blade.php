@@ -53,10 +53,10 @@
     ];
 @endphp
 
-<header class="frontend-header {{ request()->is($heroPages) ? 'frontend-header--hero' : 'frontend-header--static' }}">
+<header id="frontendHeader" class="frontend-header {{ request()->is($heroPages) ? 'frontend-header--hero' : 'frontend-header--static' }}">
     <div class="container">
         <div class="header-inner">
-            <x-site-logo />
+            <x-site-logo :use-sticky-variant="true" />
 
             <nav class="header-nav d-none d-lg-flex">
                 <ul class="header-menu">
@@ -122,7 +122,7 @@
 
 <aside class="mobile-sidebar" id="mobileSidebar" aria-hidden="true">
     <div class="mobile-sidebar-header">
-        <x-site-logo :icon-size="20" />
+        <x-site-logo :icon-size="24" />
         <button type="button" class="btn mobile-sidebar-close" id="mobileSidebarClose" aria-label="Close menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>

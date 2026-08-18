@@ -4,17 +4,15 @@
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <span class="features-badge">
                     <span class="features-badge-dot"></span>
-                    Our Features
+                    Our Advantages
                 </span>
                 <h2 class="features-title">
-                    Reliable features that drive
-                    <span class="features-title-accent">scientific excellence</span>
+                    Delivering innovative pharmaceutical products that meet the evolving needs <span class="features-title-accent"> of global healthcare</span>
                 </h2>
             </div>
             <div class="col-lg-5">
                 <p class="features-intro cursor-zoom">
-                    We are committed to delivering reliable laboratory services, precise analysis,
-                    and research support backed by scientific expertise and modern technology.
+                    We combine advanced manufacturing capabilities, regulatory expertise, and global supply excellence to deliver a comprehensive portfolio of pharmaceutical products and medical devices 
                 </p>
                 <a href="{{ url('/contact-us') }}" class="features-cta cursor-zoom">
                     <span>Contact Us</span>
@@ -30,7 +28,7 @@
         </div>
 
         <div class="row features-grid">
-            <div class="col-lg-4 mb-4 mb-lg-0 home-reveal-item">
+            <div class="col-lg-6 mb-4 mb-lg-0 home-reveal-item">
                 <div class="feature-media">
                     <img src="{{ asset('assets/images/sans1.webp') }}" alt="Scientists in laboratory">
                     <div class="feature-video-btn" aria-hidden="true">
@@ -48,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 mb-4 mb-lg-0 home-reveal-item">
+            {{-- <div class="col-lg-4 mb-4 mb-lg-0 home-reveal-item">
                 <div class="features-stack">
                     <div class="feature-card feature-card--team">
                         <div class="feature-avatars">
@@ -84,44 +82,38 @@
                         <img class="feature-microscope" src="{{ asset('assets/images/sans3.webp') }}" alt="">
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-lg-4 home-reveal-item">
+            <div class="col-lg-6 home-reveal-item">
                 <div class="features-stack">
                     <div class="feature-card feature-card--standards">
-                        <h3 class="feature-card-title">Certified Quality Standards</h3>
+                        <h3 class="feature-card-title">Core Strengths</h3>
                         <div class="feature-card-divider"></div>
+                        @php
+                            $coreStrengths = [
+                                'WHO-GMP & EU-GMP Manufacturing Facilities',
+                                'Dedicated Cytotoxic Drug Manufacturing Facility',
+                                '15+ Pharmaceutical Dosage Forms',
+                                '40+ Oncology Products',
+                                '35+ Medical Device Products',
+                                'Experienced Team of Pharmacists & Biomedical Engineers',
+                                'Specialized Cold Chain Supply Solutions',
+                                'Expert Regulatory & Dossier Support',
+                            ];
+                        @endphp
                         <ul class="feature-list">
-                            <li>
-                                <span class="feature-list-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                        fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                    </svg>
-                                </span>
-                                Adherence globally recognized laboratory
-                            </li>
-                            <li>
-                                <span class="feature-list-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                        fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                    </svg>
-                                </span>
-                                All procedures are scientifically validated
-                            </li>
-                            <li>
-                                <span class="feature-list-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                        fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                    </svg>
-                                </span>
-                                Routine internal and external audits
-                            </li>
+                            @foreach ($coreStrengths as $strength)
+                                <li>
+                                    <span class="feature-list-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                        </svg>
+                                    </span>
+                                    {{ $strength }}
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 

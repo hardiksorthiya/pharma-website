@@ -1,8 +1,20 @@
 <section class="categories-section product-categories-section">
     <div class="container">
-        <div class="categories-intro mb-4">
-            <h2 class="categories-heading">Product Categories</h2>
-            <p class="categories-subheading">Choose a category to browse related sub categories and products.</p>
+        <div class="products-page-intro">
+            <p>
+                Our product portfolio is supported by quality-focused manufacturing, regulatory expertise,
+                and reliable global supply capabilities, enabling us to serve pharmaceutical importers,
+                distributors, hospitals, institutions, and healthcare organizations across international markets.
+            </p>
+        </div>
+
+        <div class="categories-intro products-portfolio-heading">
+            <span class="products-portfolio-badge">
+                <span class="products-portfolio-badge-dot"></span>
+                Product Portfolio
+            </span>
+            <h2 class="categories-heading">Explore Our Product Portfolio</h2>
+            <p class="categories-subheading">Browse our product categories below to explore our pharmaceutical and healthcare solutions.</p>
         </div>
 
         <div class="row">
@@ -38,6 +50,28 @@
                     <div class="categories-empty">No product categories available yet.</div>
                 </div>
             @endforelse
+        </div>
+
+        <div class="products-cta-stack">
+            <article class="products-cta-card">
+                <h3 class="products-cta-title">Can&rsquo;t Find the Product You Need?</h3>
+                <p class="products-cta-text">
+                    If you cannot find the product you are looking for in the categories above, share your specific
+                    requirement with us. Our team will work with you to identify, source, or develop a suitable
+                    solution based on your product specifications and market requirements.
+                </p>
+                <a href="{{ url('/contact-us') }}#contactForm" class="products-cta-link">Send Your Product Requirement →</a>
+            </article>
+
+            <article class="products-cta-card">
+                <h3 class="products-cta-title">Looking for an Orphan or Rare Disease Medicine?</h3>
+                <p class="products-cta-text">
+                    We understand that sourcing orphan drugs and medicines for rare diseases can be challenging.
+                    Share your specific product requirement with our team, and we will explore suitable sourcing
+                    and supply options through our pharmaceutical network.
+                </p>
+                <a href="{{ url('/contact-us') }}#contactForm" class="products-cta-link">Upload Your Orphan Drug Requirement →</a>
+            </article>
         </div>
     </div>
 </section>

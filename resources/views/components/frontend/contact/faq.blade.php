@@ -1,28 +1,47 @@
 @php
     $faqs = [
         [
-            'question' => 'How can I request a quote for laboratory testing?',
-            'answer' => 'Fill out the contact form on this page or email us at '.($settings->email ?? 'info@sanskritipharma.com').' with your project details. Our team will review your requirements and respond with a tailored quote within 24–48 business hours.',
+            'question' => 'Do you provide customized pharmaceutical solutions?',
+            'answer' => [
+                'Yes. We specialize in providing customized pharmaceutical solutions based on specific customer and market requirements.',
+                'Depending on feasibility and applicable regulatory requirements, we can support customized molecules, strengths, dosage forms, formulations, packaging configurations, private labeling, and other product-specific requirements.',
+            ],
         ],
         [
-            'question' => 'What certifications does your laboratory hold?',
-            'answer' => 'Our facilities follow ISO-certified quality management systems and validated testing protocols. We maintain strict compliance with national and international pharmaceutical and laboratory standards.',
+            'question' => 'What if the product I need is not listed on your website?',
+            'answer' => [
+                'Our website represents only a selection of our available products and capabilities.',
+                'If you cannot find the product you require, simply send us the product name, strength, dosage form, quantity, and destination country. Our team will evaluate your requirement and explore suitable sourcing, manufacturing, or supply options.',
+            ],
+            'link' => ['text' => 'Send Your Product Requirement →', 'url' => '#contactForm'],
         ],
         [
-            'question' => 'How long does it take to receive test results?',
-            'answer' => 'Turnaround times vary by test type. Routine analyses are typically completed within 3–5 business days. Complex or specialized studies may require additional time, which we communicate upfront.',
+            'question' => 'Can you supply medicines directly to hospitals and healthcare institutions?',
+            'answer' => 'Yes. Subject to applicable regulations and commercial requirements, we can work with hospitals, healthcare institutions, pharmaceutical distributors, importers, procurement organizations, and other authorized healthcare entities.',
         ],
         [
-            'question' => 'Do you accept international sample submissions?',
-            'answer' => 'Yes. We work with partners worldwide and can guide you through proper sample collection, packaging, and shipping requirements to ensure integrity upon arrival.',
+            'question' => 'Can you help source orphan drugs and rare disease medicines?',
+            'answer' => [
+                'Yes. We assist international customers with requirements for orphan drugs, specialty medicines, and medicines used for rare diseases, subject to product availability and applicable regulatory requirements.',
+                'Send us the product details and destination country, and our team will evaluate suitable sourcing and supply options.',
+            ],
+            'link' => ['text' => 'Submit Orphan Drug Requirement →', 'url' => '#contactForm'],
         ],
         [
-            'question' => 'How do I schedule a consultation with your team?',
-            'answer' => 'Use the contact form and select your subject, or call us directly. A specialist will arrange a consultation to discuss your research or testing needs.',
+            'question' => 'Do you provide customized packaging and labeling?',
+            'answer' => 'Yes. Depending on product, order quantity, and regulatory requirements, we can support customized packaging, private labeling, artwork, language requirements, and market-specific labeling.',
         ],
         [
-            'question' => 'What payment methods do you accept?',
-            'answer' => 'We accept bank transfers, corporate purchase orders, and other standard B2B payment arrangements. Payment terms are outlined in your project agreement or invoice.',
+            'question' => 'Can you handle temperature-sensitive pharmaceutical shipments?',
+            'answer' => [
+                'Yes. We specialize in 2°C–8°C cold-chain pharmaceutical supply for applicable temperature-sensitive products.',
+                'Depending on shipment requirements, we can arrange suitable insulated packaging and temperature monitoring with data loggers to help maintain product integrity throughout transportation.',
+            ],
+        ],
+        [
+            'question' => 'How can I become a distributor or business partner?',
+            'answer' => 'We welcome partnership opportunities with pharmaceutical importers, distributors, healthcare organizations, and other qualified partners across international markets. Share your company profile, country, areas of interest, and product requirements with our business development team to start a discussion.',
+            'link' => ['text' => 'Discuss a Business Partnership →', 'url' => '#contactForm'],
         ],
     ];
 @endphp
@@ -35,12 +54,12 @@
                 FAQ
             </span>
             <h2 class="contact-faq-title">
-                Frequently asked
-                <span class="contact-faq-title-accent">questions</span>
+                Frequently Asked
+                <span class="contact-faq-title-accent">Questions</span>
             </h2>
             <p class="contact-faq-intro">
-                Quick answers to common questions about our services, testing process,
-                and how to get started with {{ config('app.name', 'Sanskriti Pharma') }}.
+                Find answers to common questions about our pharmaceutical products, global supply,
+                customized solutions, regulatory support, cold-chain logistics, and business partnerships.
             </p>
         </div>
 
@@ -49,6 +68,7 @@
                 @php
                     $itemId = 'contactFaq' . ($index + 1);
                     $isFirst = $index === 0;
+                    $answers = is_array($faq['answer']) ? $faq['answer'] : [$faq['answer']];
                 @endphp
                 <div class="contact-faq-item {{ $isFirst ? 'contact-faq-item--active' : '' }}">
                     <div class="contact-faq-item-header" id="{{ $itemId }}Heading">
@@ -73,7 +93,12 @@
                         aria-labelledby="{{ $itemId }}Heading"
                         data-parent="#contactFaqAccordion">
                         <div class="contact-faq-body">
-                            <p>{{ $faq['answer'] }}</p>
+                            @foreach ($answers as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                            @if (! empty($faq['link']))
+                                <a href="{{ $faq['link']['url'] }}" class="contact-faq-link">{{ $faq['link']['text'] }}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
